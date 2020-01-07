@@ -3,9 +3,4 @@
     package="com.study.common">
 
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
-
-    <application>
-        <activity android:name=".base.BaseActivity"></activity>
-    </application>
-
 </manifest>

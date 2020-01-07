@@ -36,7 +36,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 设置toolbar标题
      */
-    fun setToolaBar(toolbar: Toolbar, title:String){
+    fun setToolBar(toolbar: Toolbar, title:String){
         toolbar.title = title
         setSupportActionBar(toolbar)
         val supportActionBar = supportActionBar
