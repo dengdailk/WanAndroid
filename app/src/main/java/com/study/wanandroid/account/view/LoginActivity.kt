@@ -32,7 +32,7 @@ class LoginActivity : LifecycleActivity<AccountViewModel>() {
             finish()
         }
 
-        //TODO 好烂的办法 有没有什么好办法 不使用databinding的情况下
+        // 好烂的办法 有没有什么好办法 不使用databinding的情况下
 
         mTvAccount.addTextChangedListener(object : TextWatcher{
 
