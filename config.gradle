@@ -39,7 +39,7 @@ ext {
             "recyclerview"   : "com.android.support:recyclerview-v7:${supportLibrary}",
             "constraint"     : "androidx.constraintlayout:constraintlayout:1.1.3",
             "kotlin"         : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
-//            "design"         : "com.android.support:design:$supportLibrary",
+            "design"         : "com.android.support:design:$supportLibrary",
     ]
 
     third_dependencies = [

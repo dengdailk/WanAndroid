@@ -1,5 +1,6 @@
 package com.study.common.ext
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.text.Html
@@ -53,6 +54,7 @@ fun Activity.hideKeyboard() {
     imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
 }
 
+@SuppressLint("ObsoleteSdkInt")
 fun String.toHtml(): String {
     return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
         Html.fromHtml(this, Html.FROM_HTML_MODE_COMPACT).toString()

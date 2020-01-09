@@ -1,13 +1,18 @@
 package com.study.common.base
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.view.Window
+import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.study.common.common.AppManager
 import io.reactivex.disposables.Disposable
+
 
 abstract class BaseActivity : AppCompatActivity() {
     var disposable: Disposable? = null
@@ -20,6 +25,14 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
         AppManager.instance.addActivity(this)
+        val window: Window = window
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.getDecorView().setSystemUiVisibility(
+            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        )
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.setStatusBarColor(Color.TRANSPARENT)
         initView()
         initData()
     }
@@ -58,7 +71,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        disposable?.isDisposed()
+        disposable?.dispose()
         AppManager.instance.removeActivity(this)
     }
 }
