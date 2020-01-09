@@ -28,7 +28,6 @@ class WeChatFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(WeChatViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }
