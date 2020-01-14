@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
+import com.study.common.callback.EmptyCallback
+import com.study.common.callback.ErrorCallback
+import com.study.common.callback.LoadingCallback
 
 /**
  * @author Laizexin on 2019/11/29
@@ -18,7 +21,13 @@ abstract class BaseFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(getLayoutId(), null)
-        loadService = LoadSir.getDefault().register(rootView) {reLoad()}
+        val loadSir = LoadSir.Builder()
+            .addCallback(EmptyCallback())
+            .addCallback(LoadingCallback())
+            .addCallback(ErrorCallback())
+            .setDefaultCallback(LoadingCallback::class.java)
+            .build()
+        loadService = loadSir.register(rootView) {reLoad()}
         return loadService.loadLayout
     }
 
