@@ -4,6 +4,8 @@ import com.kkaka.wanandroid.account.data.regist.RegisterRsp
 import com.study.common.https.BaseResponse
 import com.study.wanandroid.account.data.login.LoginRsp
 import com.study.wanandroid.collect.data.CollectRsp
+import com.study.wanandroid.home.data.BannerRsp
+import com.study.wanandroid.home.data.HomeArticleRsp
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -19,8 +21,8 @@ interface ApiService {
     /**
      * 首页文章
      */
-//    @GET("/article/list/{page}/json")
-//    fun getHomeArticle(@Path("page") page: Int): Observable<BaseResponse<HomeArticleRsp>>
+    @GET("/article/list/{page}/json")
+    fun getHomeArticle(@Path("page") page: Int): Observable<BaseResponse<HomeArticleRsp>>
 
     /**
      * 收藏
@@ -63,8 +65,8 @@ interface ApiService {
     /**
      * 获取首页轮播图
      */
-//    @GET("/banner/json")
-//    fun getBanner(): Observable<BaseResponse<List<BannerRsp>>>
+    @GET("/banner/json")
+    fun getBanner(): Observable<BaseResponse<List<BannerRsp>>>
 
     /**
      * 获取微信头

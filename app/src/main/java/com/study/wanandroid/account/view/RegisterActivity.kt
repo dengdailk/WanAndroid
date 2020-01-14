@@ -21,7 +21,7 @@ class RegisterActivity : LifecycleActivity<AccountViewModel>() {
     }
 
     override fun initView() {
-//        super.initView()
+        super.initView()
 
         mBtnRegist.setOnClickListener {
             mViewModel.regist(mTvAccount.str(),mTvPassword.str(),mTvRepassword.str())

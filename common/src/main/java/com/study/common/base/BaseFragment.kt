@@ -14,7 +14,7 @@ import com.kingja.loadsir.core.LoadSir
  */
 abstract class BaseFragment : Fragment() {
 
-    lateinit var loadService : LoadService<*>
+    lateinit var loadService : LoadService<Any>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(getLayoutId(), null)

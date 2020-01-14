@@ -31,7 +31,7 @@ abstract class ArticleFragment<T : ArticleViewModel<*>> : LifecycleFragment<T>()
     private var collectState = false
     private lateinit var mActivity : Activity
 
-    public lateinit var mArticleAdapter : ArticleAdapter
+    lateinit var mArticleAdapter : ArticleAdapter
 
     override fun getLayoutId(): Int = R.layout.fragment_article
 

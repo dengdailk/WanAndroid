@@ -19,7 +19,7 @@ class LoginActivity : LifecycleActivity<AccountViewModel>() {
     }
 
     override fun initView() {
-//        super.initView()
+        super.initView()
 
         mBtnLogin.setOnClickListener {
             mViewModel.login(mTvAccount.str(),mTvPassword.str())

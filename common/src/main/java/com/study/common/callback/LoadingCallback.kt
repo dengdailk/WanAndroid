@@ -10,6 +10,8 @@ import com.study.common.R
  * email：291996307@qq.com
  * description：
  */
-class LoadingCallback  : Callback() {
-    override fun onCreateView(): Int = R.layout.layout_loading
+class LoadingCallback : Callback() {
+    override fun onCreateView(): Int{
+       return R.layout.layout_loading
+    }
 }

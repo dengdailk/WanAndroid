@@ -1,33 +1,93 @@
 package com.study.wanandroid.home.view
 
-import androidx.lifecycle.ViewModelProviders
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.study.wanandroid.R
-
+import com.study.wanandroid.WebActivity
+import com.study.wanandroid.common.GlideImageLoader
+import com.study.wanandroid.common.adapter.ArticleAdapter
+import com.study.wanandroid.common.article.data.Article
+import com.study.wanandroid.common.article.view.ArticleFragment
+import com.study.wanandroid.home.data.BannerRsp
 import com.study.wanandroid.home.viewmodel.HomeViewModel
+import com.youth.banner.Banner
+import com.youth.banner.BannerConfig
+import com.youth.banner.Transformer
+import kotlinx.android.synthetic.main.layout_home_headview.view.*
+import org.jetbrains.anko.support.v4.startActivity
 
-class HomeFragment : Fragment() {
+class HomeFragment : ArticleFragment<HomeViewModel>() {
 
-    companion object {
-        fun newInstance() = HomeFragment()
+    private var page = 0
+    private lateinit var mBanner: Banner
+    private var bannerImags = mutableListOf<String>()
+    private var bannerTitles = mutableListOf<String>()
+    private var bannerUrls = mutableListOf<String>()
+
+    override fun initView() {
+        super.initView()
+        addHeadview()
     }
 
-    private lateinit var viewModel: HomeViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.home_fragment, container, false)
+    private fun addHeadview() {
+        val headView = activity?.let { View.inflate(it, R.layout.layout_home_headview, null) }
+        mBanner = headView?.mBanner ?: mBanner
+            .setImageLoader(GlideImageLoader())
+            .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
+            .setDelayTime(3000)
+            .setBannerAnimation(Transformer.FlipHorizontal)
+            .setOnBannerListener {
+                startActivity<WebActivity>("url" to bannerUrls[it], "title" to bannerTitles[it])
+            }
+        mArticleAdapter.addHeaderView(headView)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+    override fun initData() {
+        super.initData()
+        page = 0
+        mViewModel.getArticle(page)
+        mViewModel.getBanner()
+    }
+
+    override fun dataObserver() {
+        super.dataObserver()
+        mViewModel.mHomeArticleDate.observe(this, Observer { response ->
+            response?.let {
+                addData(it.data.datas)
+            }
+
+        })
+        mViewModel.mBannerData.observe(this, Observer { response ->
+            response?.let {
+                setBannerData(it.data)
+            }
+
+        })
+    }
+
+    private fun setBannerData(data: List<BannerRsp>) {
+
+        bannerImags.clear()
+        bannerTitles.clear()
+        bannerUrls.clear()
+        data.forEach {
+            bannerImags.add(it.imagePath)
+            bannerTitles.add(it.title)
+            bannerUrls.add(it.url)
+
+        }
+        mBanner.setImages(bannerImags).setBannerTitles(bannerTitles).start()
+    }
+
+
+    override fun onRefreshData() {
+        page = 0
+        mViewModel.getArticle(page)
+    }
+
+    override fun onLoadMore() {
+        page++
+        mViewModel.getArticle(page)
     }
 
 }

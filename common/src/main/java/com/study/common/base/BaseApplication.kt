@@ -10,6 +10,7 @@ import com.study.common.callback.ErrorCallback
 import com.study.common.callback.LoadingCallback
 import com.study.common.utils.Preference
 
+
 /**
  * @author dengdai
  * @date 2020/1/6.
@@ -25,6 +26,7 @@ open class BaseApplication : Application() {
             .addCallback(ErrorCallback())
             .addCallback(LoadingCallback())
             .addCallback(EmptyCallback())
+            .setDefaultCallback(LoadingCallback::class.java)
             .commit()
 
         val formatStrategy = PrettyFormatStrategy.newBuilder()

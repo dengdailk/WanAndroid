@@ -1,7 +1,6 @@
 package com.kkaka.common.base
 
 import android.text.TextUtils
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kingja.loadsir.callback.SuccessCallback
@@ -13,6 +12,7 @@ import com.study.common.callback.LoadingCallback
 import com.study.common.common.State
 import com.study.common.common.StateType
 import com.study.common.utils.Util
+import org.jetbrains.anko.support.v4.toast
 
 /**
  * @author Laizexin on 2019/12/2
@@ -33,8 +33,10 @@ abstract class LifecycleFragment<T : BaseViewModel<*>> : BaseFragment() {
     abstract fun dataObserver()
 
     override fun reLoad() {
-        showLoading()
         super.reLoad()
+        showLoading()
+
+
     }
 
     private fun showLoading() {
@@ -51,14 +53,14 @@ abstract class LifecycleFragment<T : BaseViewModel<*>> : BaseFragment() {
 
     private fun showError(msg : String){
         if(!TextUtils.isEmpty(msg)){
-            Toast.makeText(context,msg,Toast.LENGTH_SHORT)
+            toast(msg)
         }
         loadService.showCallback(ErrorCallback::class.java)
     }
 
     open fun showTip(msg: String){
         if(!TextUtils.isEmpty(msg)){
-            Toast.makeText(context,msg,Toast.LENGTH_SHORT)
+            toast(msg)
         }
         loadService.showCallback(SuccessCallback::class.java)
     }

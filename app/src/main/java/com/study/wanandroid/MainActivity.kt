@@ -1,17 +1,10 @@
 package com.study.wanandroid
 
-import android.annotation.SuppressLint
-import android.view.Gravity
-import android.view.MenuItem
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
 import com.google.android.material.navigation.NavigationView
@@ -64,7 +57,6 @@ class MainActivity() : BaseActivity(), LoginSucListener {
     }
 
     private fun initFabButton() {
-//        val fab: FloatingActionButton = findViewById(R.id.fab)
         mNavigationBar.setFab(fab)
         fab.setOnClickListener { view ->
             //            startActivity<SearchActivity>()
@@ -231,12 +223,12 @@ class MainActivity() : BaseActivity(), LoginSucListener {
         headerView.tv_name.text = username
     }
 
-    public fun onShow() {
+    fun onShow() {
         fab.animate().translationX(0f).interpolator = AccelerateDecelerateInterpolator()
         mNavigationBar.animate().translationY(0f).interpolator = AccelerateDecelerateInterpolator()
     }
 
-    public fun onHide() {
+    fun onHide() {
         val layoutParams = fab.layoutParams
         val leftMargin = (layoutParams as ViewGroup.MarginLayoutParams).marginEnd
         fab.animate().translationX(fab.width.toFloat() + leftMargin).interpolator =
