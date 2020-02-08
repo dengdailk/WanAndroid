@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.study.common.common.State
 import com.study.common.ext.execute
 import com.study.common.https.BaseResponse
+import com.study.common.utils.LogUtil
 import com.study.wanandroid.api.BaseObserver
 import com.study.wanandroid.common.article.data.ArticleRepository
 
@@ -17,8 +18,10 @@ import com.study.wanandroid.common.article.data.ArticleRepository
 class HomeRepository(loadState:MutableLiveData<State>) : ArticleRepository(loadState) {
     fun getArticle(page:Int,liveDate:MutableLiveData<BaseResponse<HomeArticleRsp>>){
         apiService.getHomeArticle(page).execute(BaseObserver(liveDate,loadState,this))
+        LogUtil.d("test1******2"+liveDate.value)
     }
     fun getBanner(liveDate : MutableLiveData<BaseResponse<List<BannerRsp>>>){
         apiService.getBanner().execute(BaseObserver(liveDate,loadState,this))
+        LogUtil.d("test1******"+liveDate.value)
     }
 }

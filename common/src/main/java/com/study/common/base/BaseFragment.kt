@@ -17,7 +17,7 @@ import com.study.common.callback.LoadingCallback
  */
 abstract class BaseFragment : Fragment() {
 
-    lateinit var loadService : LoadService<Any>
+    lateinit var loadService : LoadService<*>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(getLayoutId(), null)

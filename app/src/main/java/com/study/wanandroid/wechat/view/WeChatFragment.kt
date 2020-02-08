@@ -1,33 +1,50 @@
 package com.study.wanandroid.wechat.view
 
-import androidx.lifecycle.ViewModelProviders
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import com.study.common.base.LifecycleFragment
 import com.study.wanandroid.R
-
+import com.study.wanandroid.common.adapter.WeChatAdapter
+import com.study.wanandroid.wechat.data.WeChatNameRsp
 import com.study.wanandroid.wechat.viewmoodel.WeChatViewModel
+import kotlinx.android.synthetic.main.fragment_wechat.*
 
-class WeChatFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = WeChatFragment()
+/**
+ * @author Laizexin on 2019/12/9
+ * @description
+ */
+class WeChatFragment : LifecycleFragment<WeChatViewModel>() {
+
+    override fun getLayoutId(): Int = R.layout.fragment_wechat
+
+    override fun initView() {
+        super.initView()
+        mTabLayout.setupWithViewPager(mContent)
     }
 
-    private lateinit var viewModel: WeChatViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.we_chat_fragment, container, false)
+    override fun initData() {
+        super.initData()
+        mViewModel.getWeChat()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(WeChatViewModel::class.java)
+    override fun dataObserver() {
+        mViewModel.mWeChatData.observe(this, Observer {
+            it?.let {
+                buildViewPage(it.data)
+            }
+        })
     }
 
+    private fun buildViewPage(datas: List<WeChatNameRsp>) {
+
+        val titles = mutableListOf<String>()
+        val fragments = mutableListOf<Fragment>()
+
+        for (data in datas) {
+            titles.add(data.name)
+            fragments.add(WeChatListFragment.newInstance(data.id))
+        }
+        mContent.adapter = WeChatAdapter(childFragmentManager, titles, fragments)
+    }
 }

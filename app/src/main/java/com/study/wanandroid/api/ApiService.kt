@@ -1,11 +1,13 @@
 package com.study.wanandroid.api
 
-import com.kkaka.wanandroid.account.data.regist.RegisterRsp
 import com.study.common.https.BaseResponse
 import com.study.wanandroid.account.data.login.LoginRsp
+import com.study.wanandroid.account.data.regist.RegisterRsp
 import com.study.wanandroid.collect.data.CollectRsp
 import com.study.wanandroid.home.data.BannerRsp
 import com.study.wanandroid.home.data.HomeArticleRsp
+import com.study.wanandroid.wechat.data.WeChatListRsp
+import com.study.wanandroid.wechat.data.WeChatNameRsp
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -71,15 +73,15 @@ interface ApiService {
     /**
      * 获取微信头
      */
-//    @GET("/wxarticle/chapters/json")
-//    fun getWeChat(): Observable<BaseResponse<List<WeChatNameRsp>>>
+    @GET("/wxarticle/chapters/json")
+    fun getWeChat(): Observable<BaseResponse<List<WeChatNameRsp>>>
 
     /**
      * 获取微信文章列表
      */
-//    @GET("/wxarticle/list/{id}/{page}/json")
-//    fun getWeChatList(@Path("id") id: Int, @Path("page") page: Int)
-//            : Observable<BaseResponse<WeChatListRsp>>
+    @GET("/wxarticle/list/{id}/{page}/json")
+    fun getWeChatList(@Path("id") id: Int, @Path("page") page: Int)
+            : Observable<BaseResponse<WeChatListRsp>>
 
     /**
      * 导航页面数据

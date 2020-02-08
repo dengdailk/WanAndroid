@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
 import com.google.android.material.navigation.NavigationView
+import com.orhanobut.logger.Logger
 import com.study.common.base.BaseActivity
 import com.study.common.common.AppManager
 import com.study.common.constant.Constant
 import com.study.common.state.login.LoginSucListener
 import com.study.common.state.login.LoginSucState
+import com.study.common.utils.LogUtil
 import com.study.common.utils.Preference
 import com.study.wanandroid.account.data.UserContext
 import com.study.wanandroid.home.view.HomeFragment
@@ -74,14 +76,17 @@ class MainActivity() : BaseActivity(), LoginSucListener {
             ActionBarDrawerToggle(this, drawerMain, toolbar, R.string.app_name, R.string.app_name)
         drawerMain.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
+//        LogUtil.d("test1******")
+//        Logger.d("test1","网络错误&&&&&&&")
     }
 
     private fun initDrawerLayout() {
         headerView = nav_view.getHeaderView(0)
-//        headerView.tv_name.text = "未登录"//mUsername
+        headerView.tv_name.text = "未登录"//mUsername
         headerView.iv_logo.setOnClickListener {
             UserContext.instance.login(this)
         }
+
     }
 
     private fun initNavView() {

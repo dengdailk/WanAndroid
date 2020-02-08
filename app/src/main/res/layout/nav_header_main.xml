@@ -26,10 +26,10 @@
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:layout_width="50dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="65dp"
         android:text="未登录"
-        android:textSize="12sp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="12sp" />
 </LinearLayout>

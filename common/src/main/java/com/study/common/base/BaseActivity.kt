@@ -16,11 +16,12 @@ import io.reactivex.disposables.Disposable
 
 abstract class BaseActivity : AppCompatActivity() {
     var disposable: Disposable? = null
-    val loadService : LoadService<*> by lazy{
-        LoadSir.getDefault().register(this){
-            reLoad()
-        }
-    }
+//    abstract val loadService : LoadService<*>
+//            by lazy{
+//        LoadSir.getDefault().register(this){
+//            reLoad()
+//        }
+//    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
@@ -42,7 +43,7 @@ abstract class BaseActivity : AppCompatActivity() {
     open fun initData(){
     }
     abstract fun getLayoutId():Int
-    open fun reLoad(){}
+//    open fun reLoad(){}
     override fun onBackPressed() = finish()
 
 

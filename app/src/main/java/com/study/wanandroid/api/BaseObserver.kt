@@ -1,13 +1,11 @@
 package com.study.wanandroid.api
 
 import androidx.lifecycle.MutableLiveData
-import com.orhanobut.logger.Logger
 import com.study.common.base.BaseRepository
 import com.study.common.common.State
 import com.study.common.common.StateType
 import com.study.common.constant.Constant
 import com.study.common.https.BaseResponse
-import com.study.wanandroid.BuildConfig
 import com.study.wanandroid.account.data.UserContext
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -40,10 +38,12 @@ class BaseObserver<T : BaseResponse<*>>(
                 }
                 loadState.postValue(State(StateType.SUCCESS))
                 liveData.postValue(response)
+//                LogUtil.d("test1******"+loadState.value)
             }
             Constant.RESPONSE_NOT_LOGIN -> {
                 UserContext.instance.logoutSuccess()
                 loadState.postValue(State(StateType.ERROR, msg = "登录过期"))
+//                LogUtil.d("test1******"+loadState.value)
             }
             else -> {
                 loadState.postValue(State(StateType.ERROR, msg = response.errorMsg))
@@ -52,9 +52,9 @@ class BaseObserver<T : BaseResponse<*>>(
     }
 
     override fun onError(e: Throwable) {
-        if (BuildConfig.DEBUG) {
-            e.message?.let { Logger.e(it) }
-        }
+//        if (BuildConfig.DEBUG) {
+//            e.message?.let { Logger.e(it) }
+//        }
         loadState.postValue(State(StateType.NETWORK_ERROR))
     }
 

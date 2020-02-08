@@ -4,6 +4,8 @@ import android.text.TextUtils
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kingja.loadsir.callback.SuccessCallback
+import com.kingja.loadsir.core.LoadService
+import com.kingja.loadsir.core.LoadSir
 import com.study.common.callback.EmptyCallback
 import com.study.common.callback.ErrorCallback
 import com.study.common.callback.LoadingCallback
@@ -19,8 +21,15 @@ import org.jetbrains.anko.toast
 abstract class LifecycleActivity <T : BaseViewModel<*>> : BaseActivity() {
 
     lateinit var mViewModel : T
-
+    lateinit var loadService : LoadService<*>
     override fun initView() {
+        val loadSir = LoadSir.Builder()
+            .addCallback(EmptyCallback())
+            .addCallback(LoadingCallback())
+            .addCallback(ErrorCallback())
+            .setDefaultCallback(LoadingCallback::class.java)
+            .build()
+        loadService = loadSir.register(this) {reLoad()}
         showLoading()
         mViewModel = ViewModelProviders.of(this).get(Util.getClass(this))
         mViewModel.loadState.observe(this,observer)
@@ -31,9 +40,8 @@ abstract class LifecycleActivity <T : BaseViewModel<*>> : BaseActivity() {
 
     abstract fun dataObserver()
 
-    override fun reLoad() {
+    private fun reLoad() {
         showLoading()
-        super.reLoad()
     }
 
     open fun showLoading() {

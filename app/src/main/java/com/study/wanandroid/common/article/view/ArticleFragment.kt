@@ -4,12 +4,13 @@ import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kkaka.common.base.LifecycleFragment
+import com.study.common.base.LifecycleFragment
 import com.study.common.state.collect.CollectListener
 import com.study.common.state.collect.CollectRefreshListener
 import com.study.common.state.collect.CollectState
 import com.study.common.state.login.LoginSucListener
 import com.study.common.state.login.LoginSucState
+import com.study.common.utils.LogUtil
 import com.study.wanandroid.MainActivity
 import com.study.wanandroid.R
 import com.study.wanandroid.account.data.UserContext
@@ -111,8 +112,8 @@ abstract class ArticleFragment<T : ArticleViewModel<*>> : LifecycleFragment<T>()
         })
     }
 
-    fun addData(datas: List<Article>) {
-        if(datas.isEmpty()){
+    fun addData(dates: List<Article>) {
+        if (dates.isEmpty()) {
             mArticleAdapter.loadMoreEnd()
             return
         }
@@ -120,13 +121,13 @@ abstract class ArticleFragment<T : ArticleViewModel<*>> : LifecycleFragment<T>()
         //下拉刷新 注意完成加载更多(存在加载更多时刷新的情况)
         if(msrlRefresh.isRefreshing){
             msrlRefresh.isRefreshing = false
-            mArticleAdapter.setNewData(datas)
+            mArticleAdapter.setNewData(dates)
             mArticleAdapter.loadMoreComplete()
             return
         }
 
         //加载更多
-        mArticleAdapter.addData(datas)
+        mArticleAdapter.addData(dates)
         mArticleAdapter.loadMoreComplete()
     }
 

@@ -10,7 +10,7 @@ import com.study.common.https.RetrofitFactory
  */
 open class ApiRepository : BaseRepository() {
 
-    public val apiService : ApiService by lazy {
+    val apiService: ApiService by lazy {
         RetrofitFactory.instance.create(ApiService::class.java)
     }
 

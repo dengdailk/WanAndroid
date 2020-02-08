@@ -2,11 +2,10 @@ package com.study.wanandroid.home.view
 
 import android.view.View
 import androidx.lifecycle.Observer
+import com.study.common.utils.LogUtil
 import com.study.wanandroid.R
 import com.study.wanandroid.WebActivity
 import com.study.wanandroid.common.GlideImageLoader
-import com.study.wanandroid.common.adapter.ArticleAdapter
-import com.study.wanandroid.common.article.data.Article
 import com.study.wanandroid.common.article.view.ArticleFragment
 import com.study.wanandroid.home.data.BannerRsp
 import com.study.wanandroid.home.viewmodel.HomeViewModel
@@ -31,6 +30,7 @@ class HomeFragment : ArticleFragment<HomeViewModel>() {
 
     private fun addHeadview() {
         val headView = activity?.let { View.inflate(it, R.layout.layout_home_headview, null) }
+//        val mBanner:Banner=headView!!.findViewById(R.id.mBanner)
         mBanner = headView?.mBanner ?: mBanner
             .setImageLoader(GlideImageLoader())
             .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
@@ -51,6 +51,7 @@ class HomeFragment : ArticleFragment<HomeViewModel>() {
 
     override fun dataObserver() {
         super.dataObserver()
+        LogUtil.d("test1******")
         mViewModel.mHomeArticleDate.observe(this, Observer { response ->
             response?.let {
                 addData(it.data.datas)

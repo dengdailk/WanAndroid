@@ -1,11 +1,9 @@
-package com.kkaka.common.base
+package com.study.common.base
 
 import android.text.TextUtils
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kingja.loadsir.callback.SuccessCallback
-import com.study.common.base.BaseFragment
-import com.study.common.base.BaseViewModel
 import com.study.common.callback.EmptyCallback
 import com.study.common.callback.ErrorCallback
 import com.study.common.callback.LoadingCallback

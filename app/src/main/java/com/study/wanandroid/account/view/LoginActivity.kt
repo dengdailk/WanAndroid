@@ -4,13 +4,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.lifecycle.Observer
 import com.study.common.base.LifecycleActivity
+import com.study.common.ext.str
 import com.study.wanandroid.R
 import com.study.wanandroid.account.data.UserContext
 import com.study.wanandroid.account.viewmodel.AccountViewModel
-
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
-import com.study.common.ext.str
 
 class LoginActivity : LifecycleActivity<AccountViewModel>() {
 
@@ -68,7 +67,7 @@ class LoginActivity : LifecycleActivity<AccountViewModel>() {
     }
 
     override fun dataObserver() {
-        mViewModel.mLoginData.observe(this, Observer {
+        mViewModel.mLoginData.observe(this, Observer { it ->
             it?.data?.let {
                 UserContext.instance.loginSuccess(it.username,it.collectIds)
                 finish()

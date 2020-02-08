@@ -1,4 +1,4 @@
-package com.kkaka.wanandroid.account.data.regist
+package com.study.wanandroid.account.data.regist
 
 data class RegisterRsp(
         var username: String,

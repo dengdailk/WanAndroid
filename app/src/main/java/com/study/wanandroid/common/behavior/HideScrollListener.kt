@@ -40,6 +40,6 @@ abstract class HideScrollListener : RecyclerView.OnScrollListener() {
         }
     }
 
-    public abstract fun onHide()
-    public abstract fun onShow()
+    abstract fun onHide()
+    abstract fun onShow()
 }
