@@ -13,7 +13,7 @@ import org.jetbrains.anko.find
 
 
 /**
- * @author Laizexin on 2019/12/23
+ * @author dengdai
  * @description
  */
 class ExtendView : FrameLayout {
@@ -69,11 +69,11 @@ class ExtendView : FrameLayout {
         obtainStyledAttributes.recycle()
     }
 
-    public fun setIconVisibility(iconVisibility: Boolean) {
+    fun setIconVisibility(iconVisibility: Boolean) {
         mIvIcon.visibility = if (iconVisibility) View.VISIBLE else View.GONE
     }
 
-    public fun setValue(value : CharSequence){
+    fun setValue(value : CharSequence){
         mTvValue.text = value
     }
 

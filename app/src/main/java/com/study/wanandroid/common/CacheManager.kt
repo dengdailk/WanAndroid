@@ -6,7 +6,7 @@ import java.io.File
 import java.math.BigDecimal
 
 /**
- * @author Laizexin on 2019/12/31
+ * @author dengdai
  * @description
  */
 object CacheManager {
@@ -58,10 +58,10 @@ object CacheManager {
             var size : Long = 0
             val fileList = it.listFiles()
             for (item in fileList) {
-                if(item.isDirectory){
-                    size += getFolderSize(item)
+                size += if(item.isDirectory){
+                    getFolderSize(item)
                 }else{
-                    size += item.length()
+                    item.length()
                 }
             }
             return size
@@ -77,17 +77,17 @@ object CacheManager {
 
         val megaByte = kiloByte / 1024
         if (megaByte < 1) {
-            val result1 = BigDecimal(java.lang.Double.toString(kiloByte))
+            val result1 = BigDecimal(kiloByte.toString())
             return result1.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "KB"
         }
         val gigaByte = megaByte / 1024
         if (gigaByte < 1) {
-            val result2 = BigDecimal(java.lang.Double.toString(megaByte))
+            val result2 = BigDecimal(megaByte.toString())
             return result2.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "MB"
         }
         val teraBytes = gigaByte / 1024
         if (teraBytes < 1) {
-            val result3 = BigDecimal(java.lang.Double.toString(gigaByte))
+            val result3 = BigDecimal(gigaByte.toString())
             return result3.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "GB"
         }
         val result4 = BigDecimal(teraBytes)

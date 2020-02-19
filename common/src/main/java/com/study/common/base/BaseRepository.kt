@@ -4,7 +4,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 /**
- * @author Laizexin on 2019/11/28
+ * @author dengdai
  * @description 负责对数据请求做批量管理
  */
 open class BaseRepository {

@@ -13,7 +13,7 @@ import com.study.common.common.StateType
 import com.study.common.utils.Util
 
 /**
- * @author Laizexin on 2019/12/2
+ * @author dengdai
  * @description
  */
 abstract class LifecycleFragment<T : BaseViewModel<*>> : BaseFragment() {

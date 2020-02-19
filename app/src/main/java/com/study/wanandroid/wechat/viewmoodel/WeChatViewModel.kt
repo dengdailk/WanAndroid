@@ -10,7 +10,7 @@ import com.study.wanandroid.wechat.data.WeChatRepository
 
 
 /**
- * @author Laizexin on 2019/12/9
+ * @author dengdai
  * @description
  */
 class WeChatViewModel(application: Application) : ArticleViewModel<WeChatRepository>(application) {
@@ -23,7 +23,7 @@ class WeChatViewModel(application: Application) : ArticleViewModel<WeChatReposit
     }
 
     fun getWeChatList(uid: Int, page: Int) {
-        mRespository.getWeChataListData(uid, page, mWeChatListData)
+        mRespository.getWeChatListData(uid, page, mWeChatListData)
     }
 
 }

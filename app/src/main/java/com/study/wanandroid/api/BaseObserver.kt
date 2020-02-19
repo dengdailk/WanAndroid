@@ -12,7 +12,7 @@ import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
 /**
- * @author Laizexin on 2019/12/2
+ * @author dengdai
  * @description
  */
 class BaseObserver<T : BaseResponse<*>>(

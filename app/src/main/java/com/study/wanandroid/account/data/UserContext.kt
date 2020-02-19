@@ -11,7 +11,7 @@ import com.study.wanandroid.account.data.login.LoginState
 import com.study.wanandroid.account.data.logout.LogoutState
 
 /**
- * @author Laizexin on 2019/12/3
+ * @author dengdai
  * @description
  */
 class UserContext private constructor(){

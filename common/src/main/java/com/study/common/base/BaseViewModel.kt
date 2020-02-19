@@ -8,7 +8,7 @@ import com.study.common.utils.Util
 
 
 /**
- * @author Laizexin on 2019/11/28
+ * @author dengdai
  * @description
  */
 open class BaseViewModel<T : BaseRepository>(application: Application) : AndroidViewModel(application){

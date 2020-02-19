@@ -1,4 +1,4 @@
-package com.study.wanandroid.collect.vm
+package com.study.wanandroid.collect.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import com.study.wanandroid.collect.data.CollectRsp
 import com.study.wanandroid.common.article.viewmodel.ArticleViewModel
 
 /**
- * @author Laizexin on 2019/12/5
+ * @author dengdai
  * @description
  */
 class CollectViewModel(application: Application) : ArticleViewModel<CollectRepository>(application) {

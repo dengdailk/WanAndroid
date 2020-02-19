@@ -9,7 +9,7 @@ import com.study.wanandroid.common.article.data.ArticleRepository
 
 
 /**
- * @author Laizexin on 2019/12/5
+ * @author dengdai
  * @description
  */
 class CollectRepository(loadState: MutableLiveData<State>) : ArticleRepository(loadState) {

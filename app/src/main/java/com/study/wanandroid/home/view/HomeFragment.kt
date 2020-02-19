@@ -2,7 +2,6 @@ package com.study.wanandroid.home.view
 
 import android.view.View
 import androidx.lifecycle.Observer
-import com.study.common.utils.LogUtil
 import com.study.wanandroid.R
 import com.study.wanandroid.WebActivity
 import com.study.wanandroid.common.GlideImageLoader
@@ -19,18 +18,17 @@ class HomeFragment : ArticleFragment<HomeViewModel>() {
 
     private var page = 0
     private lateinit var mBanner: Banner
-    private var bannerImags = mutableListOf<String>()
+    private var bannerImgs = mutableListOf<String>()
     private var bannerTitles = mutableListOf<String>()
     private var bannerUrls = mutableListOf<String>()
 
     override fun initView() {
         super.initView()
-        addHeadview()
+        addHeadView()
     }
 
-    private fun addHeadview() {
+    private fun addHeadView() {
         val headView =  View.inflate(activity, R.layout.layout_home_headview, null)
-//        val mBanner:Banner=headView!!.findViewById(R.id.mBanner)
         mBanner = headView.mBanner
         mBanner
                 .setImageLoader(GlideImageLoader())
@@ -68,16 +66,16 @@ class HomeFragment : ArticleFragment<HomeViewModel>() {
 
     private fun setBannerData(data: List<BannerRsp>) {
 
-        bannerImags.clear()
+        bannerImgs.clear()
         bannerTitles.clear()
         bannerUrls.clear()
         data.forEach {
-            bannerImags.add(it.imagePath)
+            bannerImgs.add(it.imagePath)
             bannerTitles.add(it.title)
             bannerUrls.add(it.url)
 
         }
-        mBanner.setImages(bannerImags).setBannerTitles(bannerTitles).start()
+        mBanner.setImages(bannerImgs).setBannerTitles(bannerTitles).start()
     }
 
 

@@ -7,7 +7,7 @@ import com.study.wanandroid.R
 import com.study.wanandroid.common.article.data.Article
 
 /**
- * @author Laizexin on 2019/12/2
+ * @author dengdai
  * @description
  */
 class ArticleAdapter(layoutId : Int,datas : List<Article>?) : BaseQuickAdapter<Article,BaseViewHolder>(layoutId,datas){

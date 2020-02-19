@@ -6,7 +6,7 @@ import com.study.common.base.BaseViewModel
 import com.study.wanandroid.about.data.AboutRepository
 
 /**
- * @author Laizexin on 2019/12/31
+ * @author
  * @description
  */
 class AboutViewModel (application: Application) : BaseViewModel<AboutRepository>(application){

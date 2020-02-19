@@ -1,8 +1,6 @@
 package com.study.wanandroid
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.FrameLayout
@@ -10,6 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import com.just.agentweb.AgentWeb
 import com.study.common.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_web.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class WebActivity : BaseActivity() {
     private lateinit var mAgentWeb : AgentWeb

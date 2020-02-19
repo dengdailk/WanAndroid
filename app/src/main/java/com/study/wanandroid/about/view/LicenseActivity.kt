@@ -12,7 +12,7 @@ class LicenseActivity : BaseActivity() {
 
     override fun initView() {
         super.initView()
-//        setToolBar(toolbar,getString(R.string.license))
+        setToolBar(toolbar,getString(R.string.license))
 
         val fragment = LibsBuilder()
             .withVersionShown(true)

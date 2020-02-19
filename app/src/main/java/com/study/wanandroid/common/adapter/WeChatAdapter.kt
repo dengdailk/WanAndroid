@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 
 
 /**
- * @author Laizexin on 2019/12/9
+ * @author dengdai
  * @description
  */
 class WeChatAdapter(

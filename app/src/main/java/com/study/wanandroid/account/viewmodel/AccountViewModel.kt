@@ -13,7 +13,7 @@ import com.study.wanandroid.account.data.regist.RegisterRsp
 
 
 /**
- * @author Laizexin on 2019/12/3
+ * @author dengdai
  * @description
  */
 class AccountViewModel(application: Application) : BaseViewModel<AccountRepository>(application) {

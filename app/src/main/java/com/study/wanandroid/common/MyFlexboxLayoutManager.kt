@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexboxLayoutManager
 
 /**
- * @author Laizexin on 2019/12/16
+ * @author dengdai
  * @description
  */
 class MyFlexboxLayoutManager : FlexboxLayoutManager{

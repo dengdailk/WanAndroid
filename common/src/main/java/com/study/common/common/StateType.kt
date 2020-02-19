@@ -1,7 +1,7 @@
 package com.study.common.common
 
 /**
- * @author Laizexin on 2019/11/29
+ * @author dengdai
  * @description
  */
 enum class StateType {

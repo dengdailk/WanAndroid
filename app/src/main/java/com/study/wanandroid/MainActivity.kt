@@ -8,13 +8,11 @@ import androidx.fragment.app.Fragment
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
 import com.google.android.material.navigation.NavigationView
-import com.orhanobut.logger.Logger
 import com.study.common.base.BaseActivity
 import com.study.common.common.AppManager
 import com.study.common.constant.Constant
 import com.study.common.state.login.LoginSucListener
 import com.study.common.state.login.LoginSucState
-import com.study.common.utils.LogUtil
 import com.study.common.utils.Preference
 import com.study.wanandroid.about.view.AboutActivity
 import com.study.wanandroid.account.data.UserContext
@@ -31,8 +29,7 @@ import kotlinx.android.synthetic.main.nav_header_main.view.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
-class MainActivity() : BaseActivity(), LoginSucListener {
-    var TAG: String = "MainActivity"
+class MainActivity : BaseActivity(), LoginSucListener {
     private lateinit var mCurrentFragment: Fragment
     private val nagivationFragment: NagivationFragment by lazy { NagivationFragment() }
     private val homeFragment: HomeFragment by lazy { HomeFragment() }
@@ -77,8 +74,6 @@ class MainActivity() : BaseActivity(), LoginSucListener {
             ActionBarDrawerToggle(this, drawerMain, toolbar, R.string.app_name, R.string.app_name)
         drawerMain.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
-//        LogUtil.d("test1******")
-//        Logger.d("test1","网络错误&&&&&&&")
     }
 
     private fun initDrawerLayout() {
@@ -112,7 +107,6 @@ class MainActivity() : BaseActivity(), LoginSucListener {
 
     private fun goAbout() {
         startActivity<AboutActivity>()
-
     }
 
     private fun initBottomNavigationBar() {

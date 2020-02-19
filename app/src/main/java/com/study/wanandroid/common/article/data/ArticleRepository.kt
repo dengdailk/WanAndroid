@@ -9,7 +9,7 @@ import com.study.wanandroid.api.BaseObserver
 
 
 /**
- * @author Laizexin on 2019/12/2
+ * @author dengdai
  * @description
  */
 open class ArticleRepository(val loadState : MutableLiveData<State>) : ApiRepository(){

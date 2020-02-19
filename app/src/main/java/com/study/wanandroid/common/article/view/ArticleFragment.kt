@@ -10,18 +10,19 @@ import com.study.common.state.collect.CollectRefreshListener
 import com.study.common.state.collect.CollectState
 import com.study.common.state.login.LoginSucListener
 import com.study.common.state.login.LoginSucState
-import com.study.common.utils.LogUtil
 import com.study.wanandroid.MainActivity
 import com.study.wanandroid.R
+import com.study.wanandroid.WebActivity
 import com.study.wanandroid.account.data.UserContext
 import com.study.wanandroid.common.adapter.ArticleAdapter
 import com.study.wanandroid.common.article.data.Article
 import com.study.wanandroid.common.article.viewmodel.ArticleViewModel
 import com.study.wanandroid.common.behavior.HideScrollListener
 import kotlinx.android.synthetic.main.fragment_article.*
+import org.jetbrains.anko.support.v4.startActivity
 
 /**
- * @author Laizexin on 2019/12/2
+ * @author dengdai
  * @description
  */
 abstract class ArticleFragment<T : ArticleViewModel<*>> : LifecycleFragment<T>(), CollectListener,
@@ -60,7 +61,7 @@ abstract class ArticleFragment<T : ArticleViewModel<*>> : LifecycleFragment<T>()
 
             val item = mArticleAdapter.getItem(position)
             item?.let {
-//                startActivity<WebActivity>("url" to it.link,"title" to it.title)
+                startActivity<WebActivity>("url" to it.link, "title" to it.title)
             }
         }
 
@@ -103,7 +104,7 @@ abstract class ArticleFragment<T : ArticleViewModel<*>> : LifecycleFragment<T>()
     }
 
     override fun dataObserver() {
-        mViewModel.mCollectData.observe(this, Observer { response ->
+        mViewModel.mCollectData.observe(this, Observer {
             val item = mArticleAdapter.getItem(current)
             item?.let {
                 it.collect = !collectState
@@ -143,7 +144,7 @@ abstract class ArticleFragment<T : ArticleViewModel<*>> : LifecycleFragment<T>()
     override fun loginSuccess(username: String, collectIds: List<Int>?) {
         //更新收藏 如果collectIds存在不存在都要做
 
-        collectIds?.let {
+        collectIds?.let { it ->
             it.forEach {id ->
                 mArticleAdapter.data.forEach {
                     if(it.id == id){

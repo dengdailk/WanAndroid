@@ -9,5 +9,4 @@ import com.study.common.base.BaseApplication
  * email：291996307@qq.com
  * description：
  */
-class App : BaseApplication() {
-}
+class App : BaseApplication()

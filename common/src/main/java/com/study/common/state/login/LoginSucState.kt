@@ -2,7 +2,7 @@ package com.study.common.state.login
 
 object LoginSucState {
 
-    var listeners = ArrayList<LoginSucListener>()
+    private var listeners = ArrayList<LoginSucListener>()
 
     fun addListener(listener: LoginSucListener) {
         listeners.add(listener)

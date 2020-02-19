@@ -5,7 +5,7 @@ import com.study.common.https.RetrofitFactory
 
 
 /**
- * @author Laizexin on 2019/12/2
+ * @author dengdai
  * @description
  */
 open class ApiRepository : BaseRepository() {

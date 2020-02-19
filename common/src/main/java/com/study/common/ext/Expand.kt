@@ -16,7 +16,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 /**
- * @author Laizexin on 2019/12/2
+ * @author dengdai
  * @description 拓展函数
  */
 fun <T> Observable<T>.execute(observer: Observer<T>) {
@@ -25,9 +25,9 @@ fun <T> Observable<T>.execute(observer: Observer<T>) {
         .subscribe(observer)
 }
 
-//fun TextView.str(): String {
-//    return this.text.toString().trim()
-//}
+fun TextView.str(): String {
+    return this.text.toString().trim()
+}
 
 fun ImageView.loadImage(context: Context,
                         path: String,

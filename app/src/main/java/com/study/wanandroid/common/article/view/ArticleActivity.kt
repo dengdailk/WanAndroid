@@ -18,7 +18,7 @@ abstract class ArticleActivity<T : ArticleViewModel<*>> : LifecycleActivity<T>()
     private var current = 0
     private var collectState = false
 
-    public lateinit var mArticleAdapter : ArticleAdapter
+    lateinit var mArticleAdapter : ArticleAdapter
 
     override fun getLayoutId(): Int = R.layout.activity_article
 
@@ -99,7 +99,7 @@ abstract class ArticleActivity<T : ArticleViewModel<*>> : LifecycleActivity<T>()
     abstract fun onLoadMore()
 
     override fun dataObserver() {
-        mViewModel.mCollectData.observe(this, Observer { response ->
+        mViewModel.mCollectData.observe(this, Observer {
             val item = mArticleAdapter.getItem(current)
             item?.let {
                 it.collect = !collectState

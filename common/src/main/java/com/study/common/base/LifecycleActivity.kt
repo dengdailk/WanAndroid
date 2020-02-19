@@ -15,7 +15,7 @@ import com.study.common.utils.Util
 import org.jetbrains.anko.toast
 
 /**
- * @author Laizexin on 2019/12/3
+ * @author dengdai
  * @description
  */
 abstract class LifecycleActivity <T : BaseViewModel<*>> : BaseActivity() {

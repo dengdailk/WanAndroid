@@ -27,17 +27,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".about.view.LicenseActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".AboutMeActivity"
-            android:screenOrientation="portrait">
-        </activity>
+
         <activity android:name=".about.view.AboutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity
-            android:name=".WebActivity"
+        <activity android:name=".WebActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".testActivity" />

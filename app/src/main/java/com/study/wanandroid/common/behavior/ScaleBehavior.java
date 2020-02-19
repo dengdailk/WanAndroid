@@ -13,7 +13,7 @@ import androidx.interpolator.view.animation.FastOutLinearInInterpolator;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
 /**
- * @author Laizexin on 2019/12/9
+ * @author dengdai
  * @description
  */
 public class ScaleBehavior<V extends View> extends CoordinatorLayout.Behavior<V> {

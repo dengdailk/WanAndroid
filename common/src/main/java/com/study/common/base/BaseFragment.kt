@@ -12,7 +12,7 @@ import com.study.common.callback.ErrorCallback
 import com.study.common.callback.LoadingCallback
 
 /**
- * @author Laizexin on 2019/11/29
+ * @author dengdai
  * @description
  */
 abstract class BaseFragment : Fragment() {

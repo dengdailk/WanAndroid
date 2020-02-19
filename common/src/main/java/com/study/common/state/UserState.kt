@@ -4,7 +4,7 @@ import android.content.Context
 import com.study.common.state.collect.CollectListener
 
 /**
- * @author Laizexin on 2019/12/3
+ * @author dengdai
  * @description
  */
 interface UserState {

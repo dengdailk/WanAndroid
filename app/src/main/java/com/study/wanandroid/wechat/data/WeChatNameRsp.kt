@@ -1,7 +1,7 @@
 package com.study.wanandroid.wechat.data
 
 /**
- * @author Laizexin on 2019/12/9
+ * @author dengdai
  * @description 微信公众号列表
  */
 data class WeChatNameRsp(

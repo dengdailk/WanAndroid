@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_wechat.*
 
 
 /**
- * @author Laizexin on 2019/12/9
+ * @author dengdai
  * @description
  */
 class WeChatFragment : LifecycleFragment<WeChatViewModel>() {

@@ -12,7 +12,7 @@ import java.lang.StringBuilder
 import java.util.concurrent.TimeUnit
 
 /**
- * @author Laizexin on 2019/11/28
+ * @author dengdai
  * @description Retrofit
  */
 class RetrofitFactory private constructor(){

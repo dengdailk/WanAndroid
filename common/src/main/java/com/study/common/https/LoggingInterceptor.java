@@ -18,7 +18,7 @@ import java.nio.charset.UnsupportedCharsetException;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author Laizexin on 2019/12/3
+ * @author dengdai
  * @description
  */
 public class LoggingInterceptor implements Interceptor {

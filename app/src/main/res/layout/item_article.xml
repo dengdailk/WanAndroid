@@ -7,21 +7,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="3dp"
-        app:cardCornerRadius="3dp"
+        app:cardCornerRadius="5dp"
         android:layout_margin="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:padding="16dp">
+            android:padding="10dp">
 
         <TextView
                 android:id="@+id/mTvAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/author"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:textColor="@color/black"
                 app:layout_constraintTop_toTopOf="@+id/mTvTime"
                 app:layout_constraintStart_toStartOf="parent"
@@ -34,9 +34,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ellipsize="end"
-                android:maxEms="14"
+                android:maxEms="16"
                 tools:text="标题标题标题标题标题标题标题标题标题"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@+id/mTvAuthor"
                 app:layout_constraintStart_toStartOf="@+id/mTvAuthor"/>
@@ -48,7 +48,7 @@
                 android:layout_marginTop="8dp"
                 tools:text="类别"
                 android:textColor="@color/lightBlue"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:layout_constraintTop_toBottomOf="@+id/mTvTitle"
                 app:layout_constraintStart_toStartOf="@+id/mTvTitle"/>
 

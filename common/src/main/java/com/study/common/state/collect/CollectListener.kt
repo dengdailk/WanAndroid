@@ -1,7 +1,7 @@
 package com.study.common.state.collect
 
 /**
- * @author Laizexin on 2019/12/3
+ * @author dengdai
  * @description
  */
 interface CollectListener {

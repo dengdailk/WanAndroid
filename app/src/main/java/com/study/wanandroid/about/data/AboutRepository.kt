@@ -3,15 +3,14 @@ package com.study.wanandroid.about.data
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.study.common.base.BaseRepository
-import com.study.common.common.State
 import com.study.wanandroid.common.CacheManager
 
 
 /**
- * @author Laizexin on 2019/12/31
+ * @author
  * @description
  */
-class AboutRepository(val loadState : MutableLiveData<State>) : BaseRepository() {
+class AboutRepository : BaseRepository() {
 
     fun getCacheSize(liveData: MutableLiveData<String>,context: Context) {
         liveData.postValue(CacheManager.getCacheSize(context))

@@ -8,7 +8,7 @@ import com.study.wanandroid.wechat.viewmoodel.WeChatViewModel
 
 
 /**
- * @author Laizexin on 2019/12/9
+ * @author dengdai
  * @description
  */
 class WeChatListFragment : ArticleFragment<WeChatViewModel>() {

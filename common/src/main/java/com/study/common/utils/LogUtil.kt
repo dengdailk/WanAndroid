@@ -13,7 +13,7 @@ class LogUtil {
     companion object {
 
         /**Log的前缀*/
-        var tagPrefix: String = "sunbufuLogUtil"
+        private var tagPrefix: String = "sunbufuLogUtil"
 
         /**日志是否打印的标识*/
         val flag: Boolean = true
@@ -49,6 +49,6 @@ class LogUtil {
         }
 
         /**获取函数堆栈*/
-        private fun getCallerStackTraceElement(): StackTraceElement = Thread.currentThread().getStackTrace()[5]
+        private fun getCallerStackTraceElement(): StackTraceElement = Thread.currentThread().stackTrace[5]
     }
 }

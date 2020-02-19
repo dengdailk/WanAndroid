@@ -9,7 +9,7 @@ import com.study.wanandroid.common.article.data.ArticleRepository
 
 
 /**
- * @author Laizexin on 2019/12/9
+ * @author dengdai
  * @description
  */
 class WeChatRepository(loadState: MutableLiveData<State>) : ArticleRepository(loadState) {
@@ -18,7 +18,7 @@ class WeChatRepository(loadState: MutableLiveData<State>) : ArticleRepository(lo
         apiService.getWeChat().execute(BaseObserver(liveData, loadState, this))
     }
 
-    fun getWeChataListData(
+    fun getWeChatListData(
         uid: Int,
         page: Int,
         liveData: MutableLiveData<BaseResponse<WeChatListRsp>>

@@ -4,7 +4,7 @@ package com.study.wanandroid.collect.view
 import androidx.lifecycle.Observer
 import com.study.wanandroid.R
 import com.study.wanandroid.account.data.UserContext
-import com.study.wanandroid.collect.vm.CollectViewModel
+import com.study.wanandroid.collect.viewmodel.CollectViewModel
 import com.study.wanandroid.common.article.view.ArticleActivity
 
 

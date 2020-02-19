@@ -8,7 +8,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.youth.banner.loader.ImageLoader
 
 /**
- * @author Laizexin on 2019/12/6
+ * @author dengdai
  * @description
  */
 class GlideImageLoader : ImageLoader() {

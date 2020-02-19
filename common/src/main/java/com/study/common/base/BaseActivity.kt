@@ -1,7 +1,12 @@
 package com.study.common.base
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.study.common.common.AppManager
@@ -10,16 +15,11 @@ import io.reactivex.disposables.Disposable
 
 abstract class BaseActivity : AppCompatActivity() {
     var disposable: Disposable? = null
-//    abstract val loadService : LoadService<*>
-//            by lazy{
-//        LoadSir.getDefault().register(this){
-//            reLoad()
-//        }
-//    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
         AppManager.instance.addActivity(this)
+        setStatusBarFullTransparent()
         initView()
         initData()
     }
@@ -60,5 +60,23 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onDestroy()
         disposable?.dispose()
         AppManager.instance.removeActivity(this)
+    }
+
+    /**
+     * 全透状态栏
+     */
+    protected open fun setStatusBarFullTransparent() {
+        if (Build.VERSION.SDK_INT >= 21) { //21表示5.0
+            val window: Window = window
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = Color.TRANSPARENT
+        } else if (Build.VERSION.SDK_INT >= 19) { //19表示4.4
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            //虚拟键盘也透明
+//getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
     }
 }

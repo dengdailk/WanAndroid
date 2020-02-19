@@ -1,7 +1,7 @@
 package com.study.common.state.collect
 
 /**
- * @author Laizexin on 2019/12/5
+ * @author dengdai
  * @description 收藏页更新回调首页更新
  */
 object CollectState {
