@@ -2,7 +2,7 @@ package com.study.common.base
 
 import android.text.TextUtils
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
@@ -31,7 +31,7 @@ abstract class LifecycleActivity <T : BaseViewModel<*>> : BaseActivity() {
             .build()
         loadService = loadSir.register(this) {reLoad()}
         showLoading()
-        mViewModel = ViewModelProviders.of(this).get(Util.getClass(this))
+        mViewModel = ViewModelProvider(this).get(Util.getClass(this))
         mViewModel.loadState.observe(this,observer)
 
         //设置view的observer

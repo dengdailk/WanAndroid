@@ -7,7 +7,7 @@ import com.study.wanandroid.account.view.LoginActivity
 import org.jetbrains.anko.startActivity
 
 /**
- * @author Laizexin on 2019/12/3
+ * @author
  * @description 未登录状态
  */
 class LogoutState : UserState {

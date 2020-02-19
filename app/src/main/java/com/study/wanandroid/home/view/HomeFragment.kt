@@ -29,16 +29,17 @@ class HomeFragment : ArticleFragment<HomeViewModel>() {
     }
 
     private fun addHeadview() {
-        val headView = activity?.let { View.inflate(it, R.layout.layout_home_headview, null) }
+        val headView =  View.inflate(activity, R.layout.layout_home_headview, null)
 //        val mBanner:Banner=headView!!.findViewById(R.id.mBanner)
-        mBanner = headView?.mBanner ?: mBanner
-            .setImageLoader(GlideImageLoader())
-            .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
-            .setDelayTime(3000)
-            .setBannerAnimation(Transformer.FlipHorizontal)
-            .setOnBannerListener {
-                startActivity<WebActivity>("url" to bannerUrls[it], "title" to bannerTitles[it])
-            }
+        mBanner = headView.mBanner
+        mBanner
+                .setImageLoader(GlideImageLoader())
+                .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
+                .setDelayTime(3000)
+                .setBannerAnimation(Transformer.FlipHorizontal)
+                .setOnBannerListener {
+                    startActivity<WebActivity>("url" to bannerUrls[it], "title" to bannerTitles[it])
+                }
         mArticleAdapter.addHeaderView(headView)
     }
 
@@ -51,7 +52,6 @@ class HomeFragment : ArticleFragment<HomeViewModel>() {
 
     override fun dataObserver() {
         super.dataObserver()
-        LogUtil.d("test1******")
         mViewModel.mHomeArticleDate.observe(this, Observer { response ->
             response?.let {
                 addData(it.data.datas)

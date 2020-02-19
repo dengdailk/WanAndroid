@@ -16,6 +16,7 @@ import com.study.common.state.login.LoginSucListener
 import com.study.common.state.login.LoginSucState
 import com.study.common.utils.LogUtil
 import com.study.common.utils.Preference
+import com.study.wanandroid.about.view.AboutActivity
 import com.study.wanandroid.account.data.UserContext
 import com.study.wanandroid.home.view.HomeFragment
 import com.study.wanandroid.nagivation.view.NagivationFragment
@@ -110,8 +111,8 @@ class MainActivity() : BaseActivity(), LoginSucListener {
     }
 
     private fun goAbout() {
-//        startActivity<AboutActivity>()
-        startActivity<testActivity>()
+        startActivity<AboutActivity>()
+
     }
 
     private fun initBottomNavigationBar() {

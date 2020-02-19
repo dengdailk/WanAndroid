@@ -4,7 +4,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.lifecycle.Observer
 import com.study.common.base.LifecycleActivity
-import com.study.common.ext.str
 import com.study.wanandroid.R
 import com.study.wanandroid.account.data.UserContext
 import com.study.wanandroid.account.viewmodel.AccountViewModel
@@ -24,7 +23,7 @@ class RegisterActivity : LifecycleActivity<AccountViewModel>() {
         super.initView()
 
         mBtnRegist.setOnClickListener {
-            mViewModel.regist(mTvAccount.str(),mTvPassword.str(),mTvRepassword.str())
+            mViewModel.regist(mTvAccount.toString().trim(),mTvPassword.toString().trim(),mTvRepassword.toString().trim())
         }
 
         mBtnRegist.isEnabled = false
@@ -46,7 +45,7 @@ class RegisterActivity : LifecycleActivity<AccountViewModel>() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                mBtnRegist.isEnabled = !mTvPassword.str().isEmpty() && !mTvRepassword.str().isEmpty() &&!s.isNullOrEmpty()
+                mBtnRegist.isEnabled = mTvPassword.toString().trim().isNotEmpty() && mTvRepassword.toString().trim().isNotEmpty() &&!s.isNullOrEmpty()
             }
 
         })
@@ -61,7 +60,7 @@ class RegisterActivity : LifecycleActivity<AccountViewModel>() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                mBtnRegist.isEnabled = !mTvAccount.str().isEmpty() && !mTvRepassword.str().isEmpty() && !s.isNullOrEmpty()
+                mBtnRegist.isEnabled = mTvAccount.toString().trim().isNotEmpty() && mTvRepassword.toString().trim().isNotEmpty() && !s.isNullOrEmpty()
             }
 
         })
@@ -76,7 +75,7 @@ class RegisterActivity : LifecycleActivity<AccountViewModel>() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                mBtnRegist.isEnabled = !mTvPassword.str().isEmpty() && !mTvRepassword.str().isEmpty() && !s.isNullOrEmpty()
+                mBtnRegist.isEnabled = mTvPassword.toString().trim().isNotEmpty() && mTvRepassword.toString().trim().isNotEmpty() && !s.isNullOrEmpty()
             }
 
         })
@@ -85,7 +84,7 @@ class RegisterActivity : LifecycleActivity<AccountViewModel>() {
     }
 
     override fun dataObserver() {
-        mViewModel.mRegistData.observe(this, Observer {
+        mViewModel.mRegistData.observe(this, Observer { it ->
             it?.data?.let {
                 toast(R.string.regist_success)
                 UserContext.instance.loginSuccess(it.username,it.collectIds)

@@ -6,6 +6,7 @@ import com.study.common.common.State
 import com.study.common.common.StateType
 import com.study.common.constant.Constant
 import com.study.common.https.BaseResponse
+import com.study.common.utils.LogUtil
 import com.study.wanandroid.account.data.UserContext
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -38,16 +39,19 @@ class BaseObserver<T : BaseResponse<*>>(
                 }
                 loadState.postValue(State(StateType.SUCCESS))
                 liveData.postValue(response)
-//                LogUtil.d("test1******"+loadState.value)
+                LogUtil.d("test1******3"+loadState.value)
             }
             Constant.RESPONSE_NOT_LOGIN -> {
                 UserContext.instance.logoutSuccess()
                 loadState.postValue(State(StateType.ERROR, msg = "登录过期"))
-//                LogUtil.d("test1******"+loadState.value)
+                LogUtil.d("test1******4"+loadState.value)
+
             }
             else -> {
+                LogUtil.d("test1******5"+response.errorMsg)
                 loadState.postValue(State(StateType.ERROR, msg = response.errorMsg))
             }
+
         }
     }
 

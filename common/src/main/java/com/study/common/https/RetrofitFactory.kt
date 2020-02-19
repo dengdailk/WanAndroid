@@ -4,22 +4,19 @@ import com.study.common.constant.Constant
 import com.study.common.utils.Preference
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.StringBuilder
 import java.util.concurrent.TimeUnit
-
 
 /**
  * @author Laizexin on 2019/11/28
  * @description Retrofit
  */
 class RetrofitFactory private constructor(){
-    companion object {
-        val instance: RetrofitFactory by lazy {
-            RetrofitFactory()
-        }
-    }
+
     private val retrofit : Retrofit
 
     fun <T> create(clz: Class<T>): T {
@@ -35,15 +32,22 @@ class RetrofitFactory private constructor(){
             .build()
     }
 
-    private fun initOkHttpClient(): OkHttpClient {
+    companion object {
+        val instance by lazy {
+            RetrofitFactory()
+        }
+    }
+
+    private fun initOkHttpClient() : OkHttpClient{
         return OkHttpClient.Builder()
-            .addNetworkInterceptor(LoggingInterceptor())
+//            .addNetworkInterceptor(LoggingInterceptor())
             .addInterceptor(initCookieIntercept())
-            .addInterceptor(initLoginIntercept())
+//            .addInterceptor(initLoginIntercept())
             .addInterceptor(initCommonInterceptor())
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .readTimeout(10, TimeUnit.SECONDS)
-//            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .connectTimeout(100, TimeUnit.SECONDS)
+            .readTimeout(100, TimeUnit.SECONDS)
+            .writeTimeout(100, TimeUnit.SECONDS)
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .build()
     }
 
@@ -55,13 +59,12 @@ class RetrofitFactory private constructor(){
             val requestUrl = request.url.toString()
             val domain = request.url.host
             //只保存登录或者注册
-            if (requestUrl.contains(Constant.LOGIN_KEY) || requestUrl.contains(Constant.REGISTER_KEY)) {
-                val mCookie = request.headers(Constant.SET_COOKIE_KEY)
+            if(requestUrl.contains(Constant.LOGIN_KEY) || requestUrl.contains(Constant.REGISTER_KEY)){
+                val mCookie = response.headers(Constant.SET_COOKIE_KEY)
                 mCookie?.let {
-                    saveCookie(domain, parseCookie(it))
+                    saveCookie(domain,parseCookie(it))
                 }
             }
-
             response
         }
     }

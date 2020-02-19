@@ -6,7 +6,7 @@ package com.study.common.state.collect
  */
 object CollectState {
 
-    var listeners = ArrayList<CollectRefreshListener>()
+    private var listeners = ArrayList<CollectRefreshListener>()
 
     fun addListener(listener: CollectRefreshListener) {
         listeners.add(listener)

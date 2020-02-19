@@ -4,7 +4,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.lifecycle.Observer
 import com.study.common.base.LifecycleActivity
-import com.study.common.ext.str
 import com.study.wanandroid.R
 import com.study.wanandroid.account.data.UserContext
 import com.study.wanandroid.account.viewmodel.AccountViewModel
@@ -21,7 +20,7 @@ class LoginActivity : LifecycleActivity<AccountViewModel>() {
         super.initView()
 
         mBtnLogin.setOnClickListener {
-            mViewModel.login(mTvAccount.str(),mTvPassword.str())
+            mViewModel.login(mTvAccount.toString().trim(),mTvPassword.toString().trim())
         }
 
         mBtnLogin.isEnabled = false
@@ -43,7 +42,7 @@ class LoginActivity : LifecycleActivity<AccountViewModel>() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                mBtnLogin.isEnabled = !mTvPassword.str().isEmpty() && !s.isNullOrEmpty()
+                mBtnLogin.isEnabled = mTvPassword.toString().trim().isNotEmpty() && !s.isNullOrEmpty()
             }
 
         })
@@ -58,7 +57,7 @@ class LoginActivity : LifecycleActivity<AccountViewModel>() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                mBtnLogin.isEnabled = !mTvAccount.str().isEmpty() && !s.isNullOrEmpty()
+                mBtnLogin.isEnabled = mTvAccount.toString().trim().isNotEmpty() && !s.isNullOrEmpty()
             }
 
         })

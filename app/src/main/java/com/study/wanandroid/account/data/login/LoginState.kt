@@ -7,7 +7,6 @@ import com.study.wanandroid.collect.view.CollectActivity
 import org.jetbrains.anko.startActivity
 
 /**
- * @author Laizexin on 2019/12/3
  * @description 登录状态
  */
 class LoginState : UserState {

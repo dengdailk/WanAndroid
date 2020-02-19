@@ -25,7 +25,7 @@ class Preference<T>(private val name: String, private val default: T) : ReadWrit
 
     @Suppress("UNCHECKED_CAST")
     private fun <T> findPreference(name: String, default: T): T = with(preference) {
-        val res: Any = when (default) {
+        val res: Any? = when (default) {
             is Long -> getLong(name, default)
             is String -> getString(name, default)
             is Int -> getInt(name, default)

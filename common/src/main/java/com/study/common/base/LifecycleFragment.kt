@@ -1,8 +1,9 @@
 package com.study.common.base
 
 import android.text.TextUtils
+import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.kingja.loadsir.callback.SuccessCallback
 import com.study.common.callback.EmptyCallback
 import com.study.common.callback.ErrorCallback
@@ -10,7 +11,6 @@ import com.study.common.callback.LoadingCallback
 import com.study.common.common.State
 import com.study.common.common.StateType
 import com.study.common.utils.Util
-import org.jetbrains.anko.support.v4.toast
 
 /**
  * @author Laizexin on 2019/12/2
@@ -19,10 +19,9 @@ import org.jetbrains.anko.support.v4.toast
 abstract class LifecycleFragment<T : BaseViewModel<*>> : BaseFragment() {
 
     lateinit var mViewModel : T
-
     override fun initView() {
         showLoading()
-        mViewModel = ViewModelProviders.of(this).get(Util.getClass(this))
+        mViewModel = ViewModelProvider(this).get(Util.getClass(this))
         mViewModel.loadState.observe(this,observer)
         //设置view的observer
         dataObserver()
@@ -51,14 +50,14 @@ abstract class LifecycleFragment<T : BaseViewModel<*>> : BaseFragment() {
 
     private fun showError(msg : String){
         if(!TextUtils.isEmpty(msg)){
-            toast(msg)
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT)
         }
         loadService.showCallback(ErrorCallback::class.java)
     }
 
     open fun showTip(msg: String){
         if(!TextUtils.isEmpty(msg)){
-            toast(msg)
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT)
         }
         loadService.showCallback(SuccessCallback::class.java)
     }

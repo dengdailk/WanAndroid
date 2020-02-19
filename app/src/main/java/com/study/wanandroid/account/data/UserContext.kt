@@ -18,7 +18,7 @@ class UserContext private constructor(){
 
     private var isLogin : Boolean by Preference(Constant.LOGIN_KEY,false)
 
-    var mState: UserState = LogoutState()//if (isLogin) LoginState() else LogoutState()
+    private var mState: UserState = LoginState()//if (isLogin) LoginState() else LogoutState()
 
     companion object {
         val instance by lazy { UserContext() }
