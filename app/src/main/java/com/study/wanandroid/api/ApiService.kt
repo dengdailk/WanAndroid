@@ -6,6 +6,11 @@ import com.study.wanandroid.account.data.regist.RegisterRsp
 import com.study.wanandroid.collect.data.CollectRsp
 import com.study.wanandroid.home.data.BannerRsp
 import com.study.wanandroid.home.data.HomeArticleRsp
+import com.study.wanandroid.nagivation.data.NagivationCategoryRsp
+import com.study.wanandroid.project.data.ProjectRsp
+import com.study.wanandroid.project.data.ProjectTabRsp
+import com.study.wanandroid.system.data.SystemAtricleRsp
+import com.study.wanandroid.system.data.TopMenuRsp
 import com.study.wanandroid.wechat.data.WeChatListRsp
 import com.study.wanandroid.wechat.data.WeChatNameRsp
 import io.reactivex.Observable
@@ -86,8 +91,8 @@ interface ApiService {
     /**
      * 导航页面数据
      */
-//    @GET("/navi/json")
-//    fun getCategory(): Observable<BaseResponse<List<NagivationCategoryRsp>>>
+    @GET("/navi/json")
+    fun getCategory(): Observable<BaseResponse<List<NagivationCategoryRsp>>>
 
     /**
      * 搜索
@@ -104,24 +109,24 @@ interface ApiService {
     /**
      * 体系一级菜单
      */
-//    @GET("/tree/json")
-//    fun getTopMenu(): Observable<BaseResponse<List<TopMenuRsp>>>
+    @GET("/tree/json")
+    fun getTopMenu(): Observable<BaseResponse<List<TopMenuRsp>>>
 
     /**
      * 获取体系文章列表
      */
-//    @GET("/article/list/{page}/json")
-//    fun getSystemArticles(@Path("page") page: Int, @Query("cid") id: Int): Observable<BaseResponse<SystemAtricleRsp>>
+    @GET("/article/list/{page}/json")
+    fun getSystemArticles(@Path("page") page: Int, @Query("cid") id: Int): Observable<BaseResponse<SystemAtricleRsp>>
 
     /**
      * 获取项目Tab
      */
-//    @GET("/project/tree/json")
-//    fun getProjectTab(): Observable<BaseResponse<List<ProjectTabRsp>>>
+    @GET("/project/tree/json")
+    fun getProjectTab(): Observable<BaseResponse<List<ProjectTabRsp>>>
 
     /**
      * 获取项目列表
      */
-//    @GET("/project/list/{page}/json")
-//    fun getProjectList(@Path("page") page: Int, @Query("cid") cid: Int): Observable<BaseResponse<ProjectRsp>>
+    @GET("/project/list/{page}/json")
+    fun getProjectList(@Path("page") page: Int, @Query("cid") cid: Int): Observable<BaseResponse<ProjectRsp>>
 }

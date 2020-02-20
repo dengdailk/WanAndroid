@@ -1,33 +1,90 @@
 package com.study.wanandroid.system.view
 
-import androidx.lifecycle.ViewModelProviders
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.study.wanandroid.R
-
+import com.study.wanandroid.common.adapter.SystemMenuAdapter
+import com.study.wanandroid.common.article.view.ArticleFragment
+import com.study.wanandroid.system.data.SecondMenuRsp
+import com.study.wanandroid.system.data.TopMenu
+import com.study.wanandroid.system.data.TopMenuRsp
 import com.study.wanandroid.system.viewmodel.SystemViewModel
+import kotlinx.android.synthetic.main.fragment_article.*
+import org.jetbrains.anko.support.v4.startActivity
 
-class SystemFragment : Fragment() {
+class SystemFragment : ArticleFragment<SystemViewModel>() {
 
-    companion object {
-        fun newInstance() = SystemFragment()
+
+    private val systemAdapter: SystemMenuAdapter by lazy {
+        SystemMenuAdapter(
+            R.layout.item_system_top_menu_content,
+            R.layout.item_system_top_menu_head,
+            null
+        )
     }
 
-    private lateinit var viewModel: SystemViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.system_fragment, container, false)
+    override fun initData() {
+        super.initData()
+        mViewModel.getTopMenu()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SystemViewModel::class.java)
+    override fun initView() {
+        super.initView()
+        msrlRefresh.setColorSchemeResources(R.color.colorPrimaryDark)
+        msrlRefresh.setOnRefreshListener {
+            onRefreshData()
+        }
+
+        mRvArticle.layoutManager = GridLayoutManager(activity, 4) as RecyclerView.LayoutManager?
+        mRvArticle.adapter = systemAdapter
+
+        systemAdapter.setOnItemChildClickListener { adapter, view, position ->
+            val data = (adapter.data[position] as TopMenu).childrens
+            val topTitle = (adapter.data[position] as TopMenu).header
+            val ids = arrayListOf<Int>()
+            val titls = arrayListOf<String>()
+            data.forEach {
+                ids.add(it.id)
+                titls.add(it.name)
+            }
+            startActivity<SystemArticleActivity>(
+                "ids" to ids,
+                "titls" to titls,
+                "topTitle" to topTitle
+            )
+        }
+        //无加载更多
+        systemAdapter.setEnableLoadMore(false)
+    }
+
+    override fun dataObserver() {
+        super.dataObserver()
+        mViewModel.mTopMenuData.observe(this, Observer {
+            buildTopMenu(it?.data)
+        })
+    }
+
+    private fun buildTopMenu(data: List<TopMenuRsp>?) {
+        val list = arrayListOf<TopMenu>()
+        data?.forEach {
+            list.add(TopMenu(true, it.name, it.children.isNotEmpty(), it.children))
+            it.children.forEach {
+                list.add(TopMenu(SecondMenuRsp(it.name, it.id)))
+            }
+        }
+        if (msrlRefresh.isRefreshing) {
+            msrlRefresh.isRefreshing = false
+        }
+        systemAdapter.setNewData(list)
+    }
+
+    override fun onRefreshData() {
+        mViewModel.getTopMenu()
+    }
+
+    override fun onLoadMore() {
+        //无加载更多
     }
 
 }
