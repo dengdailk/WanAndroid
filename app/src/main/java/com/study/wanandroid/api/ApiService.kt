@@ -9,6 +9,8 @@ import com.study.wanandroid.home.data.HomeArticleRsp
 import com.study.wanandroid.nagivation.data.NagivationCategoryRsp
 import com.study.wanandroid.project.data.ProjectRsp
 import com.study.wanandroid.project.data.ProjectTabRsp
+import com.study.wanandroid.search.data.HotSearchRsp
+import com.study.wanandroid.search.data.SearchResultRsp
 import com.study.wanandroid.system.data.SystemAtricleRsp
 import com.study.wanandroid.system.data.TopMenuRsp
 import com.study.wanandroid.wechat.data.WeChatListRsp
@@ -97,14 +99,14 @@ interface ApiService {
     /**
      * 搜索
      */
-//    @POST("/article/query/{page}/json")
-//    fun search(@Path("page") page: Int, @Query("k") key: String): Observable<BaseResponse<SearchResultRsp>>
+    @POST("/article/query/{page}/json")
+    fun search(@Path("page") page: Int, @Query("k") key: String): Observable<BaseResponse<SearchResultRsp>>
 
     /**
      * 热门搜索
      */
-//    @GET("/hotkey/json")
-//    fun getHotKey(): Observable<BaseResponse<List<HotSearchRsp>>>
+    @GET("/hotkey/json")
+    fun getHotKey(): Observable<BaseResponse<List<HotSearchRsp>>>
 
     /**
      * 体系一级菜单

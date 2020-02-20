@@ -19,6 +19,7 @@ import com.study.wanandroid.account.data.UserContext
 import com.study.wanandroid.home.view.HomeFragment
 import com.study.wanandroid.nagivation.view.NagivationFragment
 import com.study.wanandroid.project.view.ProjectFragment
+import com.study.wanandroid.search.view.SearchActivity
 import com.study.wanandroid.system.view.SystemFragment
 import com.study.wanandroid.wechat.view.WeChatFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -58,8 +59,8 @@ class MainActivity : BaseActivity(), LoginSucListener {
 
     private fun initFabButton() {
         mNavigationBar.setFab(fab)
-        fab.setOnClickListener { view ->
-            //            startActivity<SearchActivity>()
+        fab.setOnClickListener {
+            startActivity<SearchActivity>()
         }
     }
 
