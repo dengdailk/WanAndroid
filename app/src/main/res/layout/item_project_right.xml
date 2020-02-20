@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="3dp"
+        android:layout_margin="10dp"
+        android:id="@+id/content">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="16dp">
+
+            <TextView
+                    android:id="@+id/mTvAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/author"
+                    android:textSize="10sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    app:layout_constraintTop_toTopOf="@+id/mTvTime"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/mTvTime"/>
+
+            <TextView
+                    android:id="@+id/mTvDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:ellipsize="end"
+                    android:maxEms="25"
+                    android:maxLines="4"
+                    tools:text="标题标题标题标题标题标题标题标题标题"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/mTvAuthor"
+                    app:layout_constraintStart_toStartOf="@+id/mTvAuthor"/>
+
+            <TextView
+                    android:id="@+id/mTvZan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    tools:text="赞"
+                    android:textColor="@color/lightBlue"
+                    android:textSize="10sp"
+                    app:layout_constraintTop_toBottomOf="@+id/mTvDesc"
+                    app:layout_constraintStart_toStartOf="@+id/mTvDesc"/>
+
+            <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@mipmap/ic_zan"
+                    app:layout_constraintStart_toEndOf="@+id/mTvZan"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/mTvZan"
+                    app:layout_constraintTop_toTopOf="@+id/mTvZan"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+                android:id="@+id/mIvPic"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
