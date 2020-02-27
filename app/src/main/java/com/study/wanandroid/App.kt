@@ -1,6 +1,15 @@
 package com.study.wanandroid
 
-import com.study.common.base.BaseApplication
+import android.annotation.SuppressLint
+import android.app.Application
+import com.kingja.loadsir.core.LoadSir
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
+import com.orhanobut.logger.PrettyFormatStrategy
+import com.study.common.callback.EmptyCallback
+import com.study.common.callback.ErrorCallback
+import com.study.common.callback.LoadingCallback
+import com.study.common.utils.Preference
 
 /**
  * @author dengdai
@@ -9,4 +18,24 @@ import com.study.common.base.BaseApplication
  * email：291996307@qq.com
  * description：
  */
-class App : BaseApplication()
+@SuppressLint("Registered")
+class App : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        LoadSir.beginBuilder()
+            .addCallback(ErrorCallback())
+            .addCallback(LoadingCallback())
+            .addCallback(EmptyCallback())
+            .setDefaultCallback(LoadingCallback::class.java)
+            .commit()
+
+        val formatStrategy = PrettyFormatStrategy.newBuilder()
+            .tag("WanAndroid >>> ")
+            .build()
+
+        Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
+
+
+        Preference.setContext(applicationContext)
+    }
+}
