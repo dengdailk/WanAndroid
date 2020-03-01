@@ -1,18 +1,33 @@
 package com.study.wanandroid
 
-import com.study.common.base.BaseActivity
+import android.graphics.Color
+import android.os.Bundle
+import android.view.View
+import android.view.Window
+import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import io.reactivex.Observable
+import io.reactivex.disposables.Disposable
 import org.jetbrains.anko.startActivity
 import java.util.concurrent.TimeUnit
 
-class SplashActivity : BaseActivity() {
+class SplashActivity : AppCompatActivity() {
 
-    override fun getLayoutId(): Int {
-        return R.layout.activity_splash
+    var disposable: Disposable? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
+        val window: Window = window
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = Color.TRANSPARENT
+        initView()
     }
 
-    override fun initView() {
-        super.initView()
+
+   fun initView() {
 
         if (BuildConfig.DEBUG) {
             startActivity<MainActivity>()
@@ -20,6 +35,13 @@ class SplashActivity : BaseActivity() {
         }
         disposable = Observable.timer(3, TimeUnit.SECONDS).subscribe {
             startActivity<MainActivity>()
+            finish()
         }
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable?.dispose()
     }
 }

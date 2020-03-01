@@ -27,11 +27,11 @@ class AboutActivity : BaseActivity() {
         }
 
         mGithub.setOnClickListener {
-//            startActivity<WebActivity>("url" to getString(R.string.github_url),"title" to "KKaKa")
+//            startActivity<WebActivity>("url" to getString(R.string.github_url),"title" to "study")
         }
 
         mJianshu.setOnClickListener {
-//            startActivity<WebActivity>("url" to getString(R.string.jianshu_url),"title" to "益力多不多")
+//            startActivity<WebActivity>("url" to getString(R.string.jianshu_url),"title" to "dengdai")
         }
 
         mVersion.setValue(BuildConfig.VERSION_NAME)
