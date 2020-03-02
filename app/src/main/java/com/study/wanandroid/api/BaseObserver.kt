@@ -5,7 +5,6 @@ import com.study.common.base.BaseRepository
 import com.study.common.common.State
 import com.study.common.common.StateType
 import com.study.common.constant.Constant
-import com.study.common.https.BaseResponse
 import com.study.common.utils.LogUtil
 import com.study.wanandroid.account.data.UserContext
 import io.reactivex.Observer

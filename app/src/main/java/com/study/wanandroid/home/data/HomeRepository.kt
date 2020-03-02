@@ -3,8 +3,7 @@ package com.study.wanandroid.home.data
 import androidx.lifecycle.MutableLiveData
 import com.study.common.common.State
 import com.study.common.ext.execute
-import com.study.common.https.BaseResponse
-import com.study.common.utils.LogUtil
+import com.study.wanandroid.api.BaseResponse
 import com.study.wanandroid.api.BaseObserver
 import com.study.wanandroid.common.article.data.ArticleRepository
 
@@ -19,7 +18,7 @@ class HomeRepository(loadState:MutableLiveData<State>) : ArticleRepository(loadS
     fun getArticle(page:Int,liveDate:MutableLiveData<BaseResponse<HomeArticleRsp>>){
         apiService.getHomeArticle(page).execute(BaseObserver(liveDate,loadState,this))
     }
-    fun getBanner(liveDate : MutableLiveData<BaseResponse<List<BannerRsp>>>){
-        apiService.getBanner().execute(BaseObserver(liveDate,loadState,this))
+    fun getBanner(liveData : MutableLiveData<BaseResponse<List<BannerRsp>>>){
+        apiService.getBanner().execute(BaseObserver(liveData,loadState,this))
     }
 }

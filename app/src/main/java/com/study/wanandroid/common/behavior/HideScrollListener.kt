@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * @author Laizexin on 2019/12/9
+ * @author dengdai
  * @description
  */
 abstract class HideScrollListener : RecyclerView.OnScrollListener() {
@@ -35,7 +35,7 @@ abstract class HideScrollListener : RecyclerView.OnScrollListener() {
                 scrolledDistance = 0
             }
             if((controlsVisible && dy>0) || (!controlsVisible && dy<0)) {
-                scrolledDistance += dy;
+                scrolledDistance += dy
             }
         }
     }

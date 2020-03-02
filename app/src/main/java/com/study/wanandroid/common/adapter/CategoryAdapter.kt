@@ -13,7 +13,7 @@ import com.study.wanandroid.nagivation.data.NagivationCategoryRsp
  */
 class CategoryAdapter (layoutId : Int,categoryList : List<NagivationCategoryRsp>?) : BaseQuickAdapter<NagivationCategoryRsp,BaseViewHolder>(layoutId,categoryList){
 
-    public var selectPosition = 0
+    var selectPosition = 0
 
     override fun convert(helper: BaseViewHolder, item: NagivationCategoryRsp?) {
         with(helper){

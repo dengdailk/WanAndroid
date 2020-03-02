@@ -3,7 +3,7 @@ package com.study.wanandroid.nagivation.viewmodel
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.study.common.base.BaseViewModel
-import com.study.common.https.BaseResponse
+import com.study.wanandroid.api.BaseResponse
 import com.study.wanandroid.nagivation.data.NagivationCategoryRsp
 import com.study.wanandroid.nagivation.data.NagivationRepository
 

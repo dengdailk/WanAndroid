@@ -29,6 +29,7 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import java.lang.System.exit
 
 class MainActivity : BaseActivity(), LoginSucListener {
     private lateinit var mCurrentFragment: Fragment

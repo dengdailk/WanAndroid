@@ -3,7 +3,7 @@ package com.study.wanandroid.account.data
 import androidx.lifecycle.MutableLiveData
 import com.study.common.common.State
 import com.study.common.ext.execute
-import com.study.common.https.BaseResponse
+import com.study.wanandroid.api.BaseResponse
 import com.study.wanandroid.account.data.login.LoginRsp
 import com.study.wanandroid.account.data.regist.RegisterRsp
 import com.study.wanandroid.api.ApiRepository

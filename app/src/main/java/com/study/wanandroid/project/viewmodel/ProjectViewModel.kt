@@ -3,7 +3,7 @@ package com.study.wanandroid.project.viewmodel
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.study.common.base.BaseViewModel
-import com.study.common.https.BaseResponse
+import com.study.wanandroid.api.BaseResponse
 import com.study.wanandroid.project.data.ProjectRepository
 import com.study.wanandroid.project.data.ProjectRsp
 import com.study.wanandroid.project.data.ProjectTabRsp

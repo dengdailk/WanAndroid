@@ -2,7 +2,7 @@ package com.study.wanandroid.wechat.viewmoodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.study.common.https.BaseResponse
+import com.study.wanandroid.api.BaseResponse
 import com.study.wanandroid.common.article.viewmodel.ArticleViewModel
 import com.study.wanandroid.wechat.data.WeChatListRsp
 import com.study.wanandroid.wechat.data.WeChatNameRsp

@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
  * @author dengdai
  * @description
  */
+@Suppress("DEPRECATION")
 class WeChatAdapter(
     manager: FragmentManager,
     private val titles: List<String>,

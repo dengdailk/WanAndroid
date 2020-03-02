@@ -36,21 +36,21 @@ class SystemFragment : ArticleFragment<SystemViewModel>() {
             onRefreshData()
         }
 
-        mRvArticle.layoutManager = GridLayoutManager(activity, 4) as RecyclerView.LayoutManager?
+        mRvArticle.layoutManager = GridLayoutManager(activity, 3) as RecyclerView.LayoutManager?
         mRvArticle.adapter = systemAdapter
 
         systemAdapter.setOnItemChildClickListener { adapter, view, position ->
-            val data = (adapter.data[position] as TopMenu).childrens
+            val data = (adapter.data[position] as TopMenu).children
             val topTitle = (adapter.data[position] as TopMenu).header
             val ids = arrayListOf<Int>()
-            val titls = arrayListOf<String>()
+            val titles = arrayListOf<String>()
             data.forEach {
                 ids.add(it.id)
-                titls.add(it.name)
+                titles.add(it.name)
             }
             startActivity<SystemArticleActivity>(
                 "ids" to ids,
-                "titls" to titls,
+                "titles" to titles,
                 "topTitle" to topTitle
             )
         }
@@ -69,8 +69,8 @@ class SystemFragment : ArticleFragment<SystemViewModel>() {
         val list = arrayListOf<TopMenu>()
         data?.forEach {
             list.add(TopMenu(true, it.name, it.children.isNotEmpty(), it.children))
-            it.children.forEach {
-                list.add(TopMenu(SecondMenuRsp(it.name, it.id)))
+            it.children.forEach { secondMenuRsp ->
+                list.add(TopMenu(SecondMenuRsp(secondMenuRsp.name, secondMenuRsp.id)))
             }
         }
         if (msrlRefresh.isRefreshing) {

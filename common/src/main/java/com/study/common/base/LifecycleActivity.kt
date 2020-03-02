@@ -21,7 +21,7 @@ import org.jetbrains.anko.toast
 abstract class LifecycleActivity <T : BaseViewModel<*>> : BaseActivity() {
 
     lateinit var mViewModel : T
-    lateinit var loadService : LoadService<*>
+    private lateinit var loadService : LoadService<*>
     override fun initView() {
         val loadSir = LoadSir.Builder()
             .addCallback(EmptyCallback())

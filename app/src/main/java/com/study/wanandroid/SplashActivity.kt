@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 
 class SplashActivity : AppCompatActivity() {
 
-    var disposable: Disposable? = null
+    private var disposable: Disposable? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)

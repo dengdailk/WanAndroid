@@ -12,7 +12,7 @@ class CollectActivity : ArticleActivity<CollectViewModel>() {
 
     override fun isAddToolbar(): Boolean = true
 
-    private var index = 0;
+    private var index = 0
     private var id : Int = 0
     private var originId : Int = 0
 
@@ -40,8 +40,8 @@ class CollectActivity : ArticleActivity<CollectViewModel>() {
     override fun dataObserver() {
         mViewModel.mConnectArticleData.observe(this, Observer {
             it?.let {
-                it.data.datas.forEach {
-                    it.collect = true
+                it.data.datas.forEach { article ->
+                    article.collect = true
                 }
                 addData(it.data.datas)
             }

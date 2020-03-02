@@ -2,8 +2,7 @@ package com.study.wanandroid.home.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.study.common.https.BaseResponse
-import com.study.common.utils.LogUtil
+import com.study.wanandroid.api.BaseResponse
 import com.study.wanandroid.common.article.viewmodel.ArticleViewModel
 import com.study.wanandroid.home.data.BannerRsp
 import com.study.wanandroid.home.data.HomeArticleRsp

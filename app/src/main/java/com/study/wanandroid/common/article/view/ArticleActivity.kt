@@ -56,9 +56,9 @@ abstract class ArticleActivity<T : ArticleViewModel<*>> : LifecycleActivity<T>()
         mArticleAdapter.setEnableLoadMore(true)
         mArticleAdapter.setOnLoadMoreListener({onLoadMore()},mRvArticle)
 
-        mArticleAdapter.setOnItemClickListener { adapter, view, position -> {
-            //跳转
-        } }
+//        mArticleAdapter.setOnItemClickListener { adapter, view, position -> {
+//            //跳转
+//        } }
 
         mArticleAdapter.setOnItemChildClickListener { adapter, view, position ->
             run {

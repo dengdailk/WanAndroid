@@ -1,7 +1,5 @@
 package com.study.wanandroid.system.view
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.study.common.base.LifecycleActivity
 import com.study.wanandroid.R
@@ -12,7 +10,7 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class SystemArticleActivity : LifecycleActivity<SystemViewModel>() {
 
-    private val titles: ArrayList<String>? by lazy { intent?.getStringArrayListExtra("titls") }
+    private val titles: ArrayList<String>? by lazy { intent?.getStringArrayListExtra("titles") }
     private val ids: ArrayList<Int>? by lazy { intent?.getIntegerArrayListExtra("ids") }
     private val topTitle: String? by lazy { intent?.getStringExtra("topTitle") }
 

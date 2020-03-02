@@ -30,6 +30,7 @@ class ProjectListAdapter(datas : List<ProjectEntity>?) : BaseMultiItemQuickAdapt
         addItemType(ProjectEntity.RIGHT, R.layout.item_project_right)
     }
 
+    @Suppress("DEPRECATION")
     override fun convert(helper: BaseViewHolder, item: ProjectEntity?) {
         item?.let {
             with(helper){

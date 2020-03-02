@@ -1,7 +1,8 @@
-package com.study.common.https
+package com.study.wanandroid.api
 
 import com.study.common.constant.Constant
 import com.study.common.utils.Preference
+import com.study.wanandroid.api.interceptor.CommonInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -43,7 +44,7 @@ class RetrofitFactory private constructor(){
 //            .addNetworkInterceptor(LoggingInterceptor())
             .addInterceptor(initCookieIntercept())
 //            .addInterceptor(initLoginIntercept())
-            .addInterceptor(initCommonInterceptor())
+            .addInterceptor(CommonInterceptor())
             .connectTimeout(100, TimeUnit.SECONDS)
             .readTimeout(100, TimeUnit.SECONDS)
             .writeTimeout(100, TimeUnit.SECONDS)
@@ -70,34 +71,34 @@ class RetrofitFactory private constructor(){
     }
 
     //自动登录
-    private fun initLoginIntercept(): Interceptor {
-        return Interceptor { chain ->
-            val request = chain.request()
-            val builder = request.newBuilder()
-            val domain = request.url.host
+//    private fun initLoginIntercept(): Interceptor {
+//        return Interceptor { chain ->
+//            val request = chain.request()
+//            val builder = request.newBuilder()
+//            val domain = request.url.host
+//
+//            if(domain.isNotEmpty()){
+//                val mCookie by Preference(domain,"")
+//                if(mCookie.isNotEmpty()){
+//                    builder.addHeader(Constant.COOKIE_NAME,mCookie)
+//                }
+//            }
+//            val response = chain.proceed(builder.build())
+//            response
+//        }
+//    }
 
-            if(domain.isNotEmpty()){
-                val mCookie by Preference(domain,"")
-                if(mCookie.isNotEmpty()){
-                    builder.addHeader(Constant.COOKIE_NAME,mCookie)
-                }
-            }
-            val response = chain.proceed(builder.build())
-            response
-        }
-    }
-
-    private fun initCommonInterceptor(): Interceptor {
-        return Interceptor { chain ->
-            val request = chain.request()
-                .newBuilder()
-                .addHeader("Content-Type", "application/json")
-                .addHeader("charset", "UTF-8")
-                .build()
-
-            chain.proceed(request)
-        }
-    }
+//    private fun initCommonInterceptor(): Interceptor {
+//        return Interceptor { chain ->
+//            val request = chain.request()
+//                .newBuilder()
+//                .addHeader("Content-Type", "application/json")
+//                .addHeader("charset", "UTF-8")
+//                .build()
+//
+//            chain.proceed(request)
+//        }
+//    }
 
     private fun parseCookie(it: List<String>): String {
         if(it.isEmpty()){

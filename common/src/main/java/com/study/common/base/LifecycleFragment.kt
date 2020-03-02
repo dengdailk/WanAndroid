@@ -1,5 +1,6 @@
 package com.study.common.base
 
+import android.annotation.SuppressLint
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -48,6 +49,7 @@ abstract class LifecycleFragment<T : BaseViewModel<*>> : BaseFragment() {
         loadService.showCallback(EmptyCallback::class.java)
     }
 
+    @SuppressLint("ShowToast")
     private fun showError(msg : String){
         if(!TextUtils.isEmpty(msg)){
             Toast.makeText(context, msg, Toast.LENGTH_SHORT)
@@ -55,6 +57,7 @@ abstract class LifecycleFragment<T : BaseViewModel<*>> : BaseFragment() {
         loadService.showCallback(ErrorCallback::class.java)
     }
 
+    @SuppressLint("ShowToast")
     open fun showTip(msg: String){
         if(!TextUtils.isEmpty(msg)){
             Toast.makeText(context, msg, Toast.LENGTH_SHORT)

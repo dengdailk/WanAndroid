@@ -29,9 +29,6 @@ class LoginActivity : LifecycleActivity<AccountViewModel>() {
             startActivity<RegisterActivity>()
             finish()
         }
-
-        // 好烂的办法 有没有什么好办法 不使用databinding的情况下
-
         mTvAccount.addTextChangedListener(object : TextWatcher{
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {

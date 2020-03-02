@@ -2,7 +2,7 @@ package com.study.wanandroid.system.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.study.common.https.BaseResponse
+import com.study.wanandroid.api.BaseResponse
 import com.study.wanandroid.common.article.viewmodel.ArticleViewModel
 import com.study.wanandroid.system.data.SystemAtricleRsp
 import com.study.wanandroid.system.data.SystemRepository

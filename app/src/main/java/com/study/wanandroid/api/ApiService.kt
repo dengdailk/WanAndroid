@@ -1,6 +1,5 @@
 package com.study.wanandroid.api
 
-import com.study.common.https.BaseResponse
 import com.study.wanandroid.account.data.login.LoginRsp
 import com.study.wanandroid.account.data.regist.RegisterRsp
 import com.study.wanandroid.collect.data.CollectRsp

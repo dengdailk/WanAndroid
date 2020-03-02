@@ -4,6 +4,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.lifecycle.Observer
 import com.study.common.base.LifecycleActivity
+import com.study.common.ext.str
 import com.study.wanandroid.R
 import com.study.wanandroid.account.data.UserContext
 import com.study.wanandroid.account.viewmodel.AccountViewModel
@@ -23,7 +24,7 @@ class RegisterActivity : LifecycleActivity<AccountViewModel>() {
         super.initView()
 
         mBtnRegist.setOnClickListener {
-            mViewModel.regist(mTvAccount.toString().trim(),mTvPassword.toString().trim(),mTvRepassword.toString().trim())
+            mViewModel.regist(mTvAccount.str(),mTvPassword.str(),mTvRepassword.str())
         }
 
         mBtnRegist.isEnabled = false
@@ -32,8 +33,6 @@ class RegisterActivity : LifecycleActivity<AccountViewModel>() {
             startActivity<LoginActivity>()
             finish()
         }
-
-        // 好烂的办法 有没有什么好办法 不使用databinding的情况下
 
         mTvAccount.addTextChangedListener(object : TextWatcher {
 
@@ -45,7 +44,7 @@ class RegisterActivity : LifecycleActivity<AccountViewModel>() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                mBtnRegist.isEnabled = mTvPassword.toString().trim().isNotEmpty() && mTvRepassword.toString().trim().isNotEmpty() &&!s.isNullOrEmpty()
+                mBtnRegist.isEnabled = mTvPassword.str().isNotEmpty() && mTvRepassword.str().isNotEmpty() &&!s.isNullOrEmpty()
             }
 
         })
@@ -60,7 +59,7 @@ class RegisterActivity : LifecycleActivity<AccountViewModel>() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                mBtnRegist.isEnabled = mTvAccount.toString().trim().isNotEmpty() && mTvRepassword.toString().trim().isNotEmpty() && !s.isNullOrEmpty()
+                mBtnRegist.isEnabled = mTvAccount.str().isNotEmpty() && mTvRepassword.str().isNotEmpty() && !s.isNullOrEmpty()
             }
 
         })
@@ -75,7 +74,7 @@ class RegisterActivity : LifecycleActivity<AccountViewModel>() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                mBtnRegist.isEnabled = mTvPassword.toString().trim().isNotEmpty() && mTvRepassword.toString().trim().isNotEmpty() && !s.isNullOrEmpty()
+                mBtnRegist.isEnabled = mTvPassword.str().isNotEmpty() && mTvRepassword.str().isNotEmpty() && !s.isNullOrEmpty()
             }
 
         })

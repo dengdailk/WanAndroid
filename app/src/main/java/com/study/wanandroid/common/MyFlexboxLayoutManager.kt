@@ -9,21 +9,19 @@ import com.google.android.flexbox.FlexboxLayoutManager
  * @author dengdai
  * @description
  */
-class MyFlexboxLayoutManager : FlexboxLayoutManager{
-
-    constructor(context: Context): super(context)
-
-    constructor(context: Context, flexDirection: Int): super(context, flexDirection)
-
-    constructor(context: Context, flexDirection: Int,flexWrap : Int): super(context,flexDirection,flexWrap)
+class MyFlexboxLayoutManager(context: Context) : FlexboxLayoutManager(context) {
 
     override fun generateLayoutParams(lp: ViewGroup.LayoutParams?): RecyclerView.LayoutParams {
-        return if(lp is RecyclerView.LayoutParams){
-            FlexboxLayoutManager.LayoutParams(lp)
-        }else if(lp is ViewGroup.MarginLayoutParams){
-            FlexboxLayoutManager.LayoutParams(lp)
-        }else{
-            super.generateLayoutParams(lp)
+        return when (lp) {
+            is RecyclerView.LayoutParams -> {
+                LayoutParams(lp)
+            }
+            is ViewGroup.MarginLayoutParams -> {
+                LayoutParams(lp)
+            }
+            else -> {
+                super.generateLayoutParams(lp)
+            }
         }
     }
 }

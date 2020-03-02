@@ -28,9 +28,8 @@ class LogUtil {
          * @param any   打印的对象
          */
         private fun log(type: String, any: Any) {
-            if (!flag) return
-            var msg = any.toString()
-            var tag = getTag(getCallerStackTraceElement())
+            val msg = any.toString()
+            val tag = getTag(getCallerStackTraceElement())
             when (type) {
                 "d" -> Log.d(tag, msg)
                 "i" -> Log.i(tag, msg)

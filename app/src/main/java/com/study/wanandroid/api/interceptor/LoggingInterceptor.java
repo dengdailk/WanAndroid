@@ -1,6 +1,8 @@
-package com.study.common.https;
+package com.study.wanandroid.api.interceptor;
 
 import com.orhanobut.logger.Logger;
+
+import org.jetbrains.annotations.NotNull;
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -25,6 +27,7 @@ public class LoggingInterceptor implements Interceptor {
 
     private final Charset UTF8 = Charset.forName("UTF-8");
 
+    @NotNull
     @Override
     public Response intercept(Chain chain) throws IOException {
 

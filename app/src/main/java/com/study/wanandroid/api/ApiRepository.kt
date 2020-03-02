@@ -1,7 +1,6 @@
 package com.study.wanandroid.api
 
 import com.study.common.base.BaseRepository
-import com.study.common.https.RetrofitFactory
 
 
 /**

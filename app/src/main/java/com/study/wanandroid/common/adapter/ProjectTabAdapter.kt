@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
  * @author dengdai
  * @description
  */
+@Suppress("DEPRECATION")
 class ProjectTabAdapter(manager : FragmentManager, private val titles : List<String>, private val fragemtns : List<Fragment>) : FragmentStatePagerAdapter(manager) {
 
     override fun getPageTitle(position: Int): CharSequence? = titles[position]
