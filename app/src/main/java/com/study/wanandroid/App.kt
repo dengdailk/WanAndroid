@@ -18,7 +18,6 @@ import com.study.common.utils.Preference
  * email：291996307@qq.com
  * description：
  */
-@SuppressLint("Registered")
 class App : Application() {
     override fun onCreate() {
         super.onCreate()

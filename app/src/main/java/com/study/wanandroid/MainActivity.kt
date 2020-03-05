@@ -80,7 +80,7 @@ class MainActivity : BaseActivity(), LoginSucListener {
 
     private fun initDrawerLayout() {
         headerView = nav_view.getHeaderView(0)
-        headerView.tv_name.text = "未登录"//mUsername
+        headerView.tv_name.text = mUsername
         headerView.iv_logo.setOnClickListener {
             UserContext.instance.login(this)
         }

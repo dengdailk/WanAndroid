@@ -3,6 +3,7 @@ package com.study.wanandroid.api
 import com.study.common.constant.Constant
 import com.study.common.utils.Preference
 import com.study.wanandroid.api.interceptor.CommonInterceptor
+import com.study.wanandroid.api.interceptor.LoginInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -43,7 +44,7 @@ class RetrofitFactory private constructor(){
         return OkHttpClient.Builder()
 //            .addNetworkInterceptor(LoggingInterceptor())
             .addInterceptor(initCookieIntercept())
-//            .addInterceptor(initLoginIntercept())
+            .addInterceptor(LoginInterceptor())
             .addInterceptor(CommonInterceptor())
             .connectTimeout(100, TimeUnit.SECONDS)
             .readTimeout(100, TimeUnit.SECONDS)

@@ -4,6 +4,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.lifecycle.Observer
 import com.study.common.base.LifecycleActivity
+import com.study.common.ext.str
+import com.study.common.utils.LogUtil
 import com.study.wanandroid.R
 import com.study.wanandroid.account.data.UserContext
 import com.study.wanandroid.account.viewmodel.AccountViewModel
@@ -20,7 +22,8 @@ class LoginActivity : LifecycleActivity<AccountViewModel>() {
         super.initView()
 
         mBtnLogin.setOnClickListener {
-            mViewModel.login(mTvAccount.toString().trim(),mTvPassword.toString().trim())
+            mViewModel.login(mTvAccount.text.toString(),mTvPassword.text.toString())
+//            LogUtil.d(mTvAccount.str()+"****"+mTvPassword.str()+"$$$$$$$$$$$$$$$$$$$$$$$$")
         }
 
         mBtnLogin.isEnabled = false

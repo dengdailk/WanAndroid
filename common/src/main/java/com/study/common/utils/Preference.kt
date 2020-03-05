@@ -2,6 +2,7 @@ package com.study.common.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import java.io.*
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -19,9 +20,13 @@ class Preference<T>(private val name: String, private val default: T) : ReadWrit
         fun clear() = preference.edit().clear().apply()
     }
 
-    override fun getValue(thisRef: Any?, property: KProperty<*>): T = findPreference(name, default)
+    override fun getValue(thisRef: Any?, property: KProperty<*>): T {
+        return findPreference(name,default)
+    }
 
-    override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) = putPreference(name, value)
+    override fun setValue(thisRef: Any?, property: KProperty<*>, value: T){
+        putPreference(name,value)
+    }
 
     @Suppress("UNCHECKED_CAST")
     private fun <T> findPreference(name: String, default: T): T = with(preference) {
@@ -31,7 +36,7 @@ class Preference<T>(private val name: String, private val default: T) : ReadWrit
             is Int -> getInt(name, default)
             is Boolean -> getBoolean(name, default)
             is Float -> getFloat(name, default)
-            else -> throw IllegalArgumentException("This type can be get from Preferences")
+            else -> getString(name, serialize(default))?.let { deSerialization<Any?>(it) }
         }
         res as T
     }
@@ -43,7 +48,62 @@ class Preference<T>(private val name: String, private val default: T) : ReadWrit
             is Int -> putInt(name, value)
             is Boolean -> putBoolean(name, value)
             is Float -> putFloat(name, value)
-            else -> throw IllegalArgumentException("This type can be saved into Preferences")
+            else -> putString(name, serialize(value))
         }.apply()
     }
+
+    /**
+     * 序列化对象
+     * @param person
+     * *
+     * @return
+     * *
+     * @throws IOException
+     */
+    @Throws(IOException::class)
+    private fun <A> serialize(obj: A): String {
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        val objectOutputStream = ObjectOutputStream(
+            byteArrayOutputStream)
+        objectOutputStream.writeObject(obj)
+        var serStr = byteArrayOutputStream.toString("ISO-8859-1")
+        serStr = java.net.URLEncoder.encode(serStr, "UTF-8")
+        objectOutputStream.close()
+        byteArrayOutputStream.close()
+        return serStr
+    }
+    /**
+     * 反序列化对象
+     * @param str
+     * *
+     * @return
+     * *
+     * @throws IOException
+     * *
+     * @throws ClassNotFoundException
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IOException::class, ClassNotFoundException::class)
+    private fun <A> deSerialization(str: String): A {
+        val redStr = java.net.URLDecoder.decode(str, "UTF-8")
+        val byteArrayInputStream = ByteArrayInputStream(
+            redStr.toByteArray(charset("ISO-8859-1")))
+        val objectInputStream = ObjectInputStream(
+            byteArrayInputStream)
+        val obj = objectInputStream.readObject() as A
+        objectInputStream.close()
+        byteArrayInputStream.close()
+        return obj
+    }
+
+    /**
+     * 查询某个key是否已经存在
+     *
+     * @param key
+     * @return
+     */
+    fun contains(key: String): Boolean {
+        return preference.contains(key)
+    }
+
 }
