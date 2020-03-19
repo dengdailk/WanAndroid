@@ -27,7 +27,7 @@ class AboutActivity : BaseActivity() {
         }
 
         mGithub.setOnClickListener {
-//            startActivity<WebActivity>("url" to getString(R.string.github_url),"title" to "study")
+            startActivity<WebActivity>("url" to getString(R.string.github_url),"title" to "study")
         }
 
         mJianshu.setOnClickListener {
