@@ -31,6 +31,7 @@ class SplashActivity : AppCompatActivity() {
 
         if (BuildConfig.DEBUG) {
             startActivity<MainActivity>()
+            finish()
             return
         }
         disposable = Observable.timer(3, TimeUnit.SECONDS).subscribe {
