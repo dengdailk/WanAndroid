@@ -12,7 +12,7 @@ import androidx.room.RoomDatabase
  * email：291996307@qq.com
  * description：
  */
-@Database(entities = [Record::class], version = 1)
+@Database(entities = [Record::class], version = 1,exportSchema = false)
 abstract class RecordDatabase : RoomDatabase() {
     abstract fun recordDao(): RecordDao
 

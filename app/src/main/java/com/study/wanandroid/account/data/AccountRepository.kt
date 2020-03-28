@@ -19,8 +19,7 @@ class AccountRepository(private val loadState: MutableLiveData<State>) : ApiRepo
     fun login(userName :String,password :String,liveData: MutableLiveData<BaseResponse<LoginRsp>>){
         apiService.getLogin(userName,password).execute(BaseObserver(liveData,loadState,this))
     }
-
-    fun regist(userName: String,password: String,repassword :String ,liveData: MutableLiveData<BaseResponse<RegisterRsp>>){
-        apiService.getRegister(userName,password,repassword).execute(BaseObserver(liveData,loadState,this))
+    fun regist(userName: String,password: String,rePassword :String ,liveData: MutableLiveData<BaseResponse<RegisterRsp>>){
+        apiService.getRegister(userName,password,rePassword).execute(BaseObserver(liveData,loadState,this))
     }
 }

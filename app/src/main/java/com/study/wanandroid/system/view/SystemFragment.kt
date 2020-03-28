@@ -36,7 +36,7 @@ class SystemFragment : ArticleFragment<SystemViewModel>() {
             onRefreshData()
         }
 
-        mRvArticle.layoutManager = GridLayoutManager(activity, 3) as RecyclerView.LayoutManager?
+        mRvArticle.layoutManager = GridLayoutManager(activity, 3)
         mRvArticle.adapter = systemAdapter
 
         systemAdapter.setOnItemChildClickListener { adapter, view, position ->

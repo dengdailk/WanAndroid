@@ -1,14 +1,11 @@
 package com.study.wanandroid.about.view
 
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
 import com.afollestad.materialdialogs.MaterialDialog
 import com.study.common.base.BaseActivity
-import com.study.common.base.LifecycleActivity
 import com.study.wanandroid.BuildConfig
 import com.study.wanandroid.R
 import com.study.wanandroid.WebActivity
-import com.study.wanandroid.about.viewmodel.AboutViewModel
 import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.jetbrains.anko.startActivity

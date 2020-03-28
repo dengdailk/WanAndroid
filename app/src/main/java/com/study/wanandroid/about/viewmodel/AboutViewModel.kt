@@ -11,7 +11,7 @@ import com.study.wanandroid.about.data.AboutRepository
  */
 class AboutViewModel (application: Application) : BaseViewModel<AboutRepository>(application){
 
-    val mCacheData : MutableLiveData<String> = MutableLiveData()
+    private val mCacheData : MutableLiveData<String> = MutableLiveData()
 
     fun getCacheSize() {
         mRespository.getCacheSize(mCacheData,getApplication())

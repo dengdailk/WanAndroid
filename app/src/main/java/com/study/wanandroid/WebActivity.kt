@@ -16,6 +16,7 @@ class WebActivity : BaseActivity() {
     private lateinit var title :String
 
     override fun getLayoutId(): Int = R.layout.activity_web
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun initView() {
         url = intent.getStringExtra("url")
         title = intent.getStringExtra("title")

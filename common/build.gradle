@@ -41,7 +41,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.2.0-alpha02'
+    implementation 'androidx.appcompat:appcompat:1.2.0-alpha03'
     support_third.each { k, v -> api v }
     processor.each { k, v -> kapt v}
 //    implementation 'org.conscrypt:conscrypt-android:2.2.1'

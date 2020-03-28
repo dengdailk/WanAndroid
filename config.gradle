@@ -2,10 +2,10 @@ ext {
     isRelease = true
 
     android = [
-            compileSdkVersion: 28,
-            buildToolsVersion: "28.0.3",
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.3",
             minSdkVersion    : 25,
-            targetSdkVersion : 28,
+            targetSdkVersion : 29,
             versionCode      : 1,
             versionName      : "1.0",
     ]
@@ -23,7 +23,7 @@ ext {
     banner_version      = '1.4.10'
     agentweb_version    = '4.1.2'
     flexbox_version     = '1.0.0'
-    room_version        = '2.2.2'
+    room_version        = '2.2.5'
     circleimageview_version = '2.2.0'
     baseaadapter_version    = '2.9.47'
     about_fragment_version  = '6.1.0'

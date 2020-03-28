@@ -39,7 +39,7 @@ object CacheManager {
         file?.let {
             if(it.isDirectory){
                 val list = it.list()
-                list.forEachIndexed { index, _ ->
+                list?.forEachIndexed { index, _ ->
                     if(!deleteDir(File(it, list[index]))){
                         return false
                     }
@@ -57,7 +57,7 @@ object CacheManager {
         file?.let {
             var size : Long = 0
             val fileList = it.listFiles()
-            for (item in fileList) {
+            fileList?.forEach { item ->
                 size += if(item.isDirectory){
                     getFolderSize(item)
                 }else{
